@@ -1,0 +1,406 @@
+/* 
+	FICHERO CON ESTILO RETRO
+	
+	Autor: Robert Sallent
+	Última revisión: 27/03/2023
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap');
+@import 'base.css';
+
+
+/* éxito y error */
+.success{
+	background-color: #efe;
+	color: #363;
+}
+
+.warning{
+	background-color: #ffe;
+	color: #663;
+}
+
+.error{
+	background-color: #fee;
+	color: #633;
+}
+
+p.error, p.success{
+	padding: 20px;
+}
+
+div.error, div.success, div.warning{
+	padding: 20px;
+}
+
+div.mensajeExito, div.mensajeError, div.mensajeWarning{
+	position: fixed;
+	margin: 0px;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(120, 120, 120, 0.8);
+	width: 100vw;
+	min-height: 100vh;
+	padding: 15%;
+	z-index: 10;
+	text-align: center;
+}
+
+div.mensajeExito h2{
+	color: #090;
+	margin-bottom: 40px;
+}
+
+div.mensajeError h2{
+	color: #900;
+	margin-bottom: 40px;
+}
+
+div.mensajeWarning h2{
+	color: #990;
+	margin-bottom: 40px;
+}
+
+div.mensajeExito>div, div.mensajeError>div, div.mensajeWarning>div{
+	padding: 50px;
+	border-radius: 10px;
+	margin: auto;
+	font-size: 1.2em;
+}
+
+div.mensajeExito a:hover, div.mensajeError a:hover, div.mensajeWarning a:hover{
+	text-decoration: underline;
+}
+
+div.mensajeExito>div{
+	color: #060;
+	background-color: #cfc;
+	border: solid 5px #060;
+}
+
+div.mensajeError>div{
+	color: #600;
+	background-color: #fcc;
+	border: solid 5px #600;
+}
+
+div.mensajeWarning>div{
+	color: #660;
+	background-color: #ffc;
+	border: solid 5px #660;
+}
+
+
+
+/* distintos elementos */
+h1, h2, h3{
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+p{
+	margin-bottom: 1.1rem;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+}
+
+img{
+	filter: grayscale(100);
+}
+
+
+/* estructura de la página */
+body{
+	padding: 20px;
+	font-family: Oswald, arial, verdana, helvetica;
+	width: 100%;	
+	margin: 20px auto;
+}
+
+main{
+	padding: 20px;	
+	margin: 20px auto;
+	border: solid 2px black;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+main a{
+	color: #666;
+}
+
+main a:hover{
+	text-decoration: underline;
+}
+
+section{
+	padding: 20px;
+}
+
+.flex-container>section:not(:first-of-type){
+	border-left: dashed 2px black;
+}
+
+
+/* header y footer principales */
+header.primary{
+	display: flex;
+	flex-wrap:wrap;
+	padding: 10px;
+}
+
+header.primary figure{
+	max-width: 100px;
+}
+
+header.primary img{
+	width: 100%;
+	vertical-align: middle;
+}
+
+header.primary hgroup{
+	margin: auto 0;
+	padding: 0 2%;
+}
+
+header.primary h1{
+	font-size: 2rem;
+}
+header.primary h2{
+	font-size: 1.5rem;
+}
+
+footer.primary{
+	text-align: right;
+	padding: 20px;
+	background-color: black;
+	color: white;
+}
+
+footer.primary a{
+	font-style: italic;
+	font-size: 1.05rem;
+	color: #ddd;
+}
+
+
+footer.primary img{
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+
+footer.primary img :last-of-type{
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+footer.primary a:last-of-type img{
+	background-color: white;
+}
+
+
+header.primary, footer.primary{
+	border-bottom: solid 2px lightgrey;
+	border-top: solid 2px lightgrey;
+}
+
+/* formulario de login */
+#login{
+	min-width: 500px;
+	border: solid 1px black;
+	background-color: lightgrey;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+/* paginador */
+
+.paginator-links .current{
+	background-color: white;
+	color: grey;
+}
+
+
+/* Barra de navegación */
+menu{
+	padding: 10px;
+	background-color: black;
+	color: white;
+}
+
+menu li{
+	text-align: center;
+	display: inline-block;
+	list-style-type: none;
+}
+
+menu li a{
+	display: block;
+	padding: 10px 20px;
+	margin: 0px;
+	transition: 0.2s;
+}
+menu li a:hover{
+	background-color: white;
+	color: #006;
+}
+
+menu li:not(:first-of-type){
+	border-left: dotted 3px white;
+}
+
+/* migas */
+nav.breadcrumbs li{
+	list-style-type: none;
+	display: inline-block;
+	padding: 10px 5px;
+}
+
+nav.breadcrumbs li a:hover{
+	text-decoration: underline;
+}
+
+nav.breadcrumbs li:not(:last-of-type):after{
+	content: " >> ";
+}
+
+nav.breadcrumbs li:last-of-type{
+	font-weight: bold;
+}
+
+
+/* formularios */
+form{
+	padding: 5px;
+	margin: 5px auto;
+}
+
+form.filtro{
+	background-color: #eee;
+	padding: 10px;
+}
+
+label{
+  display: inline-block;
+  min-width: 80px; 
+  margin: 10px;
+  font-style: italic;
+}
+
+input, select, textarea{
+	padding: 6px 10px;
+}
+
+textarea{
+	vertical-align: text-top;
+	resize: none;
+	min-width: 300px;
+	min-height: 200px;
+}
+
+/* botones */
+.button, a{
+	font-size: 1rem;
+}
+
+.button{
+	color: white;
+	border: solid 2px rgb(80, 80, 80);
+	padding: 6px 20px;
+	margin: 6px;
+	border-radius: 5px;
+	background-color: black;
+	white-space: nowrap;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.button:hover{
+	background-color: grey;
+}
+
+.buttonLight{
+	color: white;
+	border: solid 2px rgb(80, 120, 180);
+	padding: 4px 12px;
+	border-radius: 5px;
+	background-color: lightgrey;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.buttonLight:hover{
+	background-color: white;
+}
+
+/* tablas */
+table{
+	border: solid 1px grey;
+	width: 100%;
+	margin: 5px auto;
+}
+
+table th{
+	color: white;
+	background-color: grey;
+	padding: 10px;
+	font-size: 1.2rem;
+	text-align: left;
+}
+
+table tr:nth-of-type(odd){
+	background-color: white;
+}
+
+table tr:nth-of-type(even){
+	background-color: #eee;
+}
+
+table tr, table td{
+	padding: 8px;
+}
+
+/* paginador*/
+.paginator-stats{
+	text-align: right;
+}
+
+.paginator-links{
+	text-align: center;
+}
+
+/* listas genéricas */
+ul.listado li, ol.listado li{
+	margin: 10px 0px 5px 20px;
+	
+}
+
+/* imágenes */
+.cover-mini{
+	width: 100%;
+	max-width: 80px;
+	max-height: 120px;
+}
+
+.cover{
+	width: 100%;
+	max-width: 280px;
+	max-height: 400px;
+	margin: 10px;
+}
+
+/* Mapa */
+#mapa{
+	width: 100%;
+	min-height: 360px;
+}
