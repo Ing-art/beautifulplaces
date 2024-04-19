@@ -7,9 +7,9 @@
  * Útil para derivar al usuario a la vista de login cuando intenta realizar una 
  * operación que requiere estar identificado.
  *
- * Última revisión: 07/04/2024.
+ * updated on: 07/04/2024.
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class NotIdentifiedException extends Exception{}

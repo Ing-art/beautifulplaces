@@ -4,8 +4,8 @@
  * 
  * Parámetros de configuración del proyecto
  * 
- * Última revisión: 24/03/24
- * @author Robert Sallent <robertsallent@gmail.com>
+ * updated on: 24/03/24
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since 0.1.0
  * @since 1.0.0 se pueden configurar las vistas de error personalizadas
  */
@@ -32,7 +32,7 @@ define('AUTOLOAD_DIRECTORIES',  [
 /* -------------------------------------------------------------
  * APLICACIÓN
  * -------------------------------------------------------------*/
-define('APP_NAME','Cifoplaces'); // Título de la aplicación.
+define('APP_NAME','Beautiful Places'); // Título de la aplicación.
 define('APP_TYPE', 'WEB');                // Tipo de aplicación: WEB o API.
 
 // Controlador y método por defecto (solamente para APP_TYPE WEB).
@@ -40,7 +40,7 @@ define('DEFAULT_CONTROLLER', 'WelcomeController');
 define('DEFAULT_METHOD', 'index');
    
 // Email del administrador, para la operación de "contacto"
-define('ADMIN_EMAIL', 'robert@juegayestudia.com');
+define('ADMIN_EMAIL', 'di.nuovo@hotmail.com');
 
 // ¿Deben las cadenas vacías ser convertidas a NULL? 
 // se aplica all recuperar los datos de la petición mediante el objeto Request,
@@ -115,7 +115,7 @@ define('USE_CUSTOM_ERROR_VIEWS', true);
 define('DB_HOST','localhost');  // Host.
 define('DB_USER','root');       // Usuario.
 define('DB_PASS','');           // Password.
-define('DB_NAME','fastlight');  // Nombre de la base de datos.
+define('DB_NAME','beautifulplaces');  // Nombre de la base de datos.
 define('DB_PORT',  3306);       // Puerto.
 define('DB_CHARSET','utf8');    // Codificación de caracteres.
 
@@ -141,7 +141,9 @@ define('USER_ROLES', [
     'Supervisor'    => 'ROLE_SUPERVISOR',
     'Editor'        => 'ROLE_EDITOR',
     'Test'          => 'ROLE_TEST',
-    'API'           => 'ROLE_API'
+    'API'           => 'ROLE_API',
+    'Moderator'     => 'ROLE_MODERATOR'
+
 ]);
 
 // Rol para el administrador (debe ser uno de los que están en la lista anterior).
@@ -176,5 +178,19 @@ define('ALLOW_CREDENTIALS', 'true');                 // ¿Se permite el envío d
 
 define('API_AUTHENTICATION', 'COOKIE'); // puede ser COOKIE (implementado) o KEY (no implementado aún)
 
-    
+ /* -------------------------------------------------------------
+ * IMAGE FOLDERS
+ * -------------------------------------------------------------*/   
+
+// Folder for book covers
+define('PLACE_IMAGE_FOLDER', '/images/places');
+
+// Default cover image
+define('DEFAULT_PLACE_IMAGE', 'noimage.png');
+
+// Folder for user images
+define('USER_IMAGE_FOLDER', '/images/users');
+
+// Defaiñt user image
+define('DEFAULT_USER_IMAGE', 'noimage.png'); 
     

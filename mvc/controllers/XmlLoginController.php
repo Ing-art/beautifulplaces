@@ -4,9 +4,9 @@
  *
  * Gestiona el login XML para la API
  *
- * Última revisión: 14/04/2023
+ * updated on: 14/04/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class XmlLoginController extends Controller{

@@ -4,9 +4,9 @@
  *
  * Para distinguir las excepciones que se producen en las vistas.
  *
- * Última revisión: 05/04/2023.
+ * updated on: 05/04/2023.
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class ViewException extends Exception{}

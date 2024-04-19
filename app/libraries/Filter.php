@@ -10,7 +10,7 @@
  *
  * Última revisión 23/03/24
  *
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
     
 class Filter{

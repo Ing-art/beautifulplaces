@@ -7,8 +7,8 @@
  |
  | Funciones helper para realizar tareas habituales.
  |
- | Última revisión: 18/07/2023
- | @author Robert Sallent <robertsallent@gmail.com>
+ | updated on: 18/07/2023
+ | FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  |
  |
  |--------------------------------------------------------------------------

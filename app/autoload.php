@@ -2,7 +2,7 @@
 
 /*
  * Fichero: autoload.php
- * Autor: Robert Sallent
+ * FastLight framework by Robert Sallent
  * Última mofidicación: 24/02/2023
  *
  * Permitirá la carga de clases automática a partir de un listado de directorios

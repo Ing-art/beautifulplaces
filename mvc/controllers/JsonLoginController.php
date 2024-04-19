@@ -4,8 +4,8 @@
  *
  * Controlador para el login en JSON mediante API
  *
- * Última revisión: 09/04/2024
- * @author Robert Sallent <robertsallent@gmail.com>
+ * updated on: 09/04/2024
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class JsonLoginController extends Controller{

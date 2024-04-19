@@ -4,9 +4,9 @@
  *
  * Controlador para la operación de logout
  *
- * Última revisión: 21/03/2023
+ * updated on: 21/03/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
     
 class LogoutController extends Controller{

@@ -6,9 +6,9 @@
   * Implementa las operaciones de login/logout y también permite hacer comprobaciones
   * sobre los distintos roles de que dispone el usuario identificado. 
   *
-  * Última revisión: 27/03/2024
+  * updated on: 27/03/2024
   * 
-  * @author Robert Sallent <robertsallent@gmail.com>
+  * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
   */
 
 

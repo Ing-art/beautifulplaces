@@ -4,8 +4,8 @@
  *
  * Implementa los métodos para las clases que permitan autorización.
  *
- * autor: Robert Sallent
- * última revisión: 23/03/2023
+ * FastLight framework by Robert Sallent
+ * updated on: 23/03/2023
  *
  */
 

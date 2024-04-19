@@ -7,9 +7,9 @@
  * Carga el fichero de configuración, el autoload, las funciones helper
  * y arranca la aplicación Web o Api.
  *
- * Última revisión: 06/07/2023
+ * updated on: 06/07/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since 0.1.0
  */
 

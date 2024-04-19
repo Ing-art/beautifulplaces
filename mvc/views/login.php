@@ -27,11 +27,11 @@
 	
     		<form class="w50 bloque-centrado" method="POST" autocomplete="off" id="login" action="/Login/enter">
     			
-    			<h2>Acceso a la aplicación</h2>
-				<p>Introduce tus datos en el formulario para identificarte.</p>
+    			<h2>Access</h2>
+				<p>Enter your email and password.</p>
 		
 				<div style="margin: 10px;">
-        			<label for="email">email:</label>
+        			<label for="email">Email:</label>
         			<input type="email" name="user" id="email" value="<?= old('user') ?>" required>
         			<br>
         			<label for="password">Password:</label>
@@ -42,7 +42,7 @@
     				<input type="submit" class="button" name="login" value="LogIn">
     			</div>
     			<div class="derecha">
-    				<a href="/Forgotpassword">Olvidé mi clave</a>
+    				<a href="/Forgotpassword">Forgot my password</a>
     			</div>
     			
     		</form>

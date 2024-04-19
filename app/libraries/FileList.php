@@ -2,7 +2,7 @@
 
     /*
         Clase: FileList
-        Autor: Robert Sallent
+        FastLight framework by Robert Sallent
         Última mofidicación: 21/06/2023
 
         Nos facilitará la tarea de realizar listados de directorio

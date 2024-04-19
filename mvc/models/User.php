@@ -4,9 +4,9 @@
  *
  * Proveedor de usuarios por defecto para las aplicaciones de FastLight.
  *
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * 
- * Última revisión: 16/04/2024
+ * updated on: 16/04/2024
  */
 
 #[\AllowDynamicProperties]

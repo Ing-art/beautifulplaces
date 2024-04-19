@@ -18,7 +18,7 @@
 		- data-mininputs: número mínimo de inputs
 		- data-maxinputs: número máximo de inputs
 	
-	Autor: Robert Sallent
+	FastLight framework by Robert Sallent
 	Última modificación: 23/02/2023	
 */ 
 

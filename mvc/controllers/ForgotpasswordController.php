@@ -4,9 +4,9 @@
  *
  * Se usa para regenerar la clave del usuario en caso de que lo solicite.
  *
- * Última revisión: 30/06/2023
+ * updated on: 30/06/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */   
 
 class ForgotpasswordController extends Controller{

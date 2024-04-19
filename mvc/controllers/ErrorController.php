@@ -4,8 +4,8 @@
  * 
  * Controlador para gestionar errores. Trabaja con el modelo AppError.
  * 
- * Última revisión: 30/06/2023
- * @author Robert Sallent <robertsallent@gmail.com>
+ * updated on: 30/06/2023
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class ErrorController extends Controller{

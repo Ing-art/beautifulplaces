@@ -7,7 +7,7 @@
  *
  *   Última mofidicación: 05/04/2024
  *
- *   @author Robert Sallent <robertsallent@gmail.com>
+ *   FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class JSON{

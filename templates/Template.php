@@ -4,8 +4,8 @@
  *
  * Se usa para generar las partes comunes de todas las vistas
  *
- * autor: Robert Sallent
- * última revisión: 16/03/2023
+ * FastLight framework by Robert Sallent
+ * updated on: 16/03/2023
  *
  */
 
@@ -49,9 +49,9 @@ class Template implements TemplateInterface{
         if(Login::isAdmin())
             return "
                  <div class='derecha'>
-                    <span>Bienvenido <a class='negrita' href='/User/home'>$user->displayname</a> 
+                    <span>Welcome <a class='negrita' href='/User/home'>$user->displayname</a> 
                     (<span class='cursiva'>$user->email</span>)
-                    , eres <a class='negrita' href='/Admin'>administrador</a>.</span> 
+                    , you are <a class='negrita' href='/Admin'>admin</a>.</span> 
                     <a class='button' href='/Logout'>LogOut</a>
                  </div>
             ";  
@@ -60,7 +60,7 @@ class Template implements TemplateInterface{
         if(Login::check())
             return "
                  <div class='derecha'>
-                    <span>Bienvenido <a href='/User/home'>$user->displayname</a>
+                    <span>Welcome <a href='/User/home'>$user->displayname</a>
                     (<span class='cursiva'>$user->email</span>).</span> 
                     <a class='button' href='/Logout'>LogOut</a>
                  </div>
@@ -81,11 +81,11 @@ class Template implements TemplateInterface{
             <header class='primary'>
                 <figure>
                     <a href='/'>
-                        <img style='width:100%;' alt='FastLight Logo' src='/images/template/fastlight.png'>
+                        <img style='width:100%;' alt='Logo' src='/images/template/logo.jpg'>
                     </a>
                 </figure>
                 <hgroup>
-            	   <h1>$titulo <span class='small italic'>en ".APP_NAME."</small></h1>
+            	   <h1>$titulo <span class='small italic'> - ".APP_NAME."</small></h1>
                    <p>".($subtitulo ?? '')."</p>
                 </hgroup>  
             </header>
@@ -97,19 +97,32 @@ class Template implements TemplateInterface{
      *****************************************************************************/
     // retorna el menú principal
     public static function getMenu(){ 
+        $html  = "<ul class='navBar'>";
         $html  = "<menu>";
-        $html .=   "<li><a href='/'>Inicio</a></li>";
+        $html .=   "<li><a href='/'>Start</a></li>";
+
+        if(Login::check())
+        $html .= "<li><a href='/User/home'>Account</a></li>";
         
         // enlace a la gestión de errores (solamente administrador)
         if(Login::isAdmin() && (DB_ERRORS || LOG_ERRORS || LOG_LOGIN_ERRORS))
-            $html .=   "<li><a href='/Error/list'>Errores</a></li>";
+            $html .=   "<li><a href='/Error/list'>Error Log</a></li>";
         
         // enlace a los tests de ejemplo (solamente administrador)    
         if(Login::isAdmin() && (DEBUG))
-            $html .=   "<li><a href='/test'>Lista de test</a></li>";
+            $html .=   "<li><a href='/test'>Tests</a></li>";
     
-        // entrada adicional de ejemplo:
-        $html .=   "<li><a href='/'>TODO</a></li>";
+        // Links to the places list 
+        $html .= "<li><a href='/Place'>Places List</a></li>";
+
+        if(Login::oneRole(['ROLE_USER']))
+            $html .= "<li><a href='/Place/create'>New Place</a></li>";
+        if(Login::guest())
+            $html.="<li><a href='/User/create'>New Account</a></li>";
+
+        $html .= "<li><a href='/Contact'>Contact</a></li>";
+
+        $html .= "</ul>";
         
         $html .= "</menu>";
 
@@ -122,7 +135,7 @@ class Template implements TemplateInterface{
     // retorna el elementos migas
     public static function getBreadCrumbs(array $migas = []):string{
         // asegura que esté el enlace a Inicio
-        $migas = ["Inicio"=>"/"]+$migas; 
+        $migas = ["Start"=>"/"]+$migas; 
         
         // preparamos el migas a partir del array 
         $html = "<nav aria-label='Breadcrumb' class='breadcrumbs'>";
@@ -151,9 +164,9 @@ class Template implements TemplateInterface{
         return ($mensaje = Session::getFlash('success')) ?
         "<div class='mensajeExito' onclick='this.remove()'>
         	<div>
-        		<h2>Operación realizada con éxito</h2>
+        		<h2>Operation successful</h2>
         		<p>$mensaje</p>
-        		<p class='mini cursiva'>-- Clic para cerrar --</p>
+        		<p class='mini cursiva'>-- Click to close --</p>
     		</div>
         </div>": '';} 
 
@@ -163,9 +176,9 @@ class Template implements TemplateInterface{
         return ($mensaje = Session::getFlash('warning')) ?
         "<div class='mensajeWarning' onclick='this.remove()'>
         	<div>
-        		<h2>Hay advertencias:</h2>
+        		<h2>Warnings:</h2>
         		<p>$mensaje</p>
-        		<p class='mini cursiva'>-- Clic para cerrar --</p>
+        		<p class='mini cursiva'>-- Click to close --</p>
     		</div>
         </div>": '';}
                 
@@ -175,9 +188,9 @@ class Template implements TemplateInterface{
         return ($mensaje = Session::getFlash('error')) ?
         "<div class='mensajeError' onclick='this.remove()'>
         	<div>
-        		<h2>Se ha producido un error</h2>
+        		<h2>Error!</h2>
         		<p>$mensaje</p>
-        		<p class='mini cursiva'>-- Clic para cerrar --</p>
+        		<p class='mini cursiva'>-- Click to close --</p>
     		</div>
         </div>": '';} 
 	
@@ -201,7 +214,7 @@ class Template implements TemplateInterface{
         
     ){
         $html = "<form method='POST' class='filtro derecha' action='$action'>";
-        $html .= "<input type='text' name='texto' placeholder='Buscar...'> ";
+        $html .= "<input type='text' name='texto' placeholder='Search...'> ";
         $html .= "<select name='campo'>";
         
         foreach($fields as $nombre=>$valor){
@@ -212,7 +225,7 @@ class Template implements TemplateInterface{
         
         $html .= "</select>";
         
-        $html .= "<label>Ordenar por:</label>";
+        $html .= "<label>Order by:</label>";
         $html .= "<select name='campoOrden'>";
         
         foreach($orders as $nombre=>$valor){
@@ -223,10 +236,10 @@ class Template implements TemplateInterface{
         
         return $html."</select>
     				<input type='radio' name='sentidoOrden' value='ASC'>
-    				<label>Ascendente</label>
+    				<label>Ascending</label>
     				<input type='radio' name='sentidoOrden' value='DESC' checked>
-    				<label>Descendente</label>
-    				<input class='button' type='submit' name='filtrar' value='Filtrar'>
+    				<label>Descending</label>
+    				<input class='button' type='submit' name='filtrar' value='Filter'>
     			</form>";
     }
     
@@ -239,7 +252,7 @@ class Template implements TemplateInterface{
         return "<form class='filtro derecha' method='POST' action='$action'>
 					<label>$filtro</label>
 					<input class='button' style='display:inline' type='submit' 
-					       name='quitarFiltro' value='Quitar filtro'>
+					       name='quitarFiltro' value='Remove Filter'>
 				</form>";
     }
     
@@ -253,15 +266,7 @@ class Template implements TemplateInterface{
         return "
         <footer class='primary'>
             
-            <p>Desarrollado por <a href='https://robertsallent.com'>
-                Robert Sallent</a> para sus cursos de desarrollo de aplicaciones web (2023).
-
-                <a href='https://robertsallent.com'>
-                    <img src='/images/template/logo.png' alt='Robert Sallent'>
-                </a>
-                <a href='https://www.linkedin.com/in/robert-sallent-l%C3%B3pez-4187a866'>
-                    <img src='/images/template/linkedin.png' alt='LinkedIn'>
-                </a>
+            <p>FastLight Framework by Robert Sallent
                 <a href='https://github.com/robertsallent/fastlight'>
                     <img src='/images/template/github.png' alt='GitHub'>
                 </a>

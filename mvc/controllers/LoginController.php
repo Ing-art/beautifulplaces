@@ -4,9 +4,9 @@
  *
  * Gestiona la operación de LogIn
  *
- * Última revisión: 18/07/2023
+ * updated on: 18/07/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class LoginController extends Controller{

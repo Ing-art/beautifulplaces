@@ -5,7 +5,7 @@
  * Simplifica la tarea de conexión y realización de consultas con la BDD.
  * Utiliza la extensión mysqli.
  * 
- * Última revisión: 28/06/2023.
+ * updated on: 28/06/2023.
  * 
  * @author Robert Sallent
  */

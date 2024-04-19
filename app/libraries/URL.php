@@ -4,8 +4,8 @@
      *
      * Herramientas para URLs y redirecciones
      *
-     * Autor: Robert Sallent
-     * Última revisión: 15/02/2023
+     * FastLight framework by Robert Sallent
+     * updated on: 15/02/2023
      *
      */
      

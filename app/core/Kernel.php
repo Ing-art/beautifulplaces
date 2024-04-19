@@ -3,8 +3,8 @@
 /**
  * Clase de la que heredan las clases del núcleo como App o Api.
  * 
- * Última revisión: 06/07/23
- * @author Robert Sallent <robertsallent@gmail.com>
+ * updated on: 06/07/23
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since v0.9.3
  */
 

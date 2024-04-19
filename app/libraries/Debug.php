@@ -5,8 +5,8 @@
  *
  * Mensajes para mostrar en modo debug
  *
- * Autor: Robert Sallent
- * Última revisión: 13/04/2023
+ * FastLight framework by Robert Sallent
+ * updated on: 13/04/2023
  *
  */
  

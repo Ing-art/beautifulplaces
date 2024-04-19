@@ -5,8 +5,8 @@
  * Clase base de la que heredarán los controladores de nuestras aplicaciones.
  *
  *
- * Última revisión: 27/03/2023
- * @author Robert Sallent <robertsallent@gmail.com>
+ * updated on: 27/03/2023
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 abstract class Controller{
     

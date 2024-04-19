@@ -4,9 +4,9 @@
  *
  * Controlador por defecto, según la configuración de config.php
  *
- * Última revisión: 07/03/2023
+ * updated on: 07/03/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class WelcomeController extends Controller{

@@ -15,9 +15,9 @@
  * Por ejemplo:
  * la URL /Test/models-libro ejecutará el fichero en test/models/libro.php
  * 
- * Última revisión: 22/06/2023
+ * updated on: 22/06/2023
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
     
 class TestController extends Controller{

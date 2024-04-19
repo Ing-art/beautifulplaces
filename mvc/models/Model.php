@@ -15,7 +15,7 @@
  *
  * Última revisión 23/03/24
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since v0.1.0
  * @since v0.9.2 añadido belongsToAny() y hasAny()
  */

@@ -4,9 +4,9 @@
  *
  * Herramienta de paginación de resultados
  *
- * Última revisión: 27/03/2024
+ * updated on: 27/03/2024
  *
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 class Paginator{
     

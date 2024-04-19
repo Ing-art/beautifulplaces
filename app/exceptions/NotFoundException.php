@@ -4,9 +4,9 @@
  *
  * Para distinguir las excepciones de recurso no encontrado.
  *
- * Última revisión: 07/04/2024.
+ * updated on: 07/04/2024.
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class NotFoundException extends Exception{}

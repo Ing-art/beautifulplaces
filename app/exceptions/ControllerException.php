@@ -4,9 +4,9 @@
  *
  * Para distinguir las excepciones que se producen en métodos de controlador
  *
- * Última revisión: 24/03/2024
+ * updated on: 24/03/2024
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since v0.9.10
  */
 

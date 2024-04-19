@@ -9,7 +9,7 @@
 	- Colocar un input de tipo file con id "file-with-preview".
 	- Si hay un input tipo hidden MAX_FILE_SIZE antes del input, se comprobará también el tamaño.
 	
-	Autor: Robert Sallent
+	FastLight framework by Robert Sallent
 	Última modificación: 24/02/2023	
 */ 
 

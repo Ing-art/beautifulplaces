@@ -4,9 +4,9 @@
  *
  * Para distinguir las excepciones de no hay nada que buscar.
  *
- * Última revisión: 23/03/2024.
+ * updated on: 23/03/2024.
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since v0.9.10
  */
 

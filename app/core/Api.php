@@ -4,9 +4,9 @@
  *
  * Controlador frontal para el desarrollo de Apis Restful
  *
- * Última revisión: 10/04/2024
+ * updated on: 10/04/2024
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class Api extends Kernel{

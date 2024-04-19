@@ -4,8 +4,8 @@
   *
   * Template para los tests.
   *
-  * Última revisión: 07/07/23
-  * @author Robert Sallent <robertsallent@gmail.com>
+  * updated on: 07/07/23
+  * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
 */
 
 class Test extends Template{

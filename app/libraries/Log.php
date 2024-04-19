@@ -5,8 +5,8 @@
  *
  * Herramientas para registro de errores y mensajes
  *
- * Autor: Robert Sallent
- * Última revisión: 09/03/2023
+ * FastLight framework by Robert Sallent
+ * updated on: 09/03/2023
  *
  */
  

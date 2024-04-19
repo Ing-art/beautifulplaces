@@ -2,7 +2,7 @@
 
 /*
  *   Clase: CSRF
- *   Autor: Robert Sallent
+ *   FastLight framework by Robert Sallent
  *   Última mofidicación: 13/04/2023
  *
  *   Para trabajar con tokens CSRF

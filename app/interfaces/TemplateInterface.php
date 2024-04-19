@@ -4,8 +4,8 @@
      *
      * Métodos que deben implementar los Templates.
      *
-     * autor: Robert Sallent
-     * última revisión: 163/03/2023
+     * FastLight framework by Robert Sallent
+     * updated on: 163/03/2023
      *
      */
     

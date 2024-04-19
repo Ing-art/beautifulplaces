@@ -7,7 +7,7 @@
  *
  *   Última mofidicación: 24/02/2023
  *
- *   @author Robert Sallent <robertsallent@gmail.com>
+ *   FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 class Email{
     

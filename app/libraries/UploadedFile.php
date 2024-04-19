@@ -6,7 +6,7 @@
  *
  * Última mofidicación: 05/07/23.
  *
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since v0.9.1
  */
 

@@ -4,8 +4,8 @@
  * 
  * Simplifica la tarea de conexión y realización de consultas con la BDD
  * 
- * autor: Robert Sallent
- * última revisión: 08/03/2023
+ * FastLight framework by Robert Sallent
+ * updated on: 08/03/2023
  * 
  */
     

@@ -6,7 +6,7 @@
  * 
  * Última modificación: 09/04/2024.
  * 
- * @author Robert Sallent <robertsallent@gmail.com>
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  * @since v0.6.5
  * @since v0.9.4 añadida propiedad $previousUrl y método sameAsPrevious()
  * @since v1.0.2 añadido métodos fromJson() y fromXML()

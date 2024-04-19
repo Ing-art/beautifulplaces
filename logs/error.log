@@ -1,0 +1,11 @@
+NotFoundException: 19/04/2024 16:38:15 - La URL indicada no existe.
+ViewException: 19/04/2024 16:39:13 - <p>ERROR en la vista <b>../mvc/views/user/create.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Undefined constant "USER_IMAGE_FOLDER"</p>
+NotFoundException: 19/04/2024 16:42:32 - La URL indicada no existe.
+Exception: 19/04/2024 16:52:49 - <p>ERROR EN LA CONSULTA:</p><p><b>INSERT INTO users (password, displayname, email, phone, location, cp, roles) VALUES ('81dc9bdb52d04dc20036dbd8313ed055', 'user2', 'user2@fastlight.com', '666 999 33', 'Barcelona', '08080', '["ROLE_USER"]')</b></p><p>Unknown column 'location' in 'field list'</p>
+Exception: 19/04/2024 16:56:23 - <p>ERROR EN LA CONSULTA:</p><p><b>INSERT INTO users (password, displayname, email, phone, location, cp, roles) VALUES ('81dc9bdb52d04dc20036dbd8313ed055', 'user2', 'user2@fastlight.com', '666 999 33', NULL, NULL, '["ROLE_USER"]')</b></p><p>Unknown column 'location' in 'field list'</p>
+NotFoundException: 19/04/2024 17:06:08 - La URL indicada no existe.
+Error: 19/04/2024 17:33:48 - Call to undefined method User::getAdds()
+Error: 19/04/2024 17:35:24 - Call to undefined method User::getAdds()
+Error: 19/04/2024 17:36:28 - Call to undefined method User::getAdds()
+Error: 19/04/2024 17:38:43 - Call to undefined method User::getAdds()

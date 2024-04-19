@@ -5,8 +5,8 @@
  *
  * Herramientas para manejo de variables de sesión y flasheo de mensajes
  *
- * Última revisión: 08/03/2023
- * @author Robert Sallent <robertsallent@gmail.com>
+ * updated on: 08/03/2023
+ * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
 
 class Session{
