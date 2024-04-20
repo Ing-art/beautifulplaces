@@ -6,11 +6,11 @@ class UserController extends Controller{
 
         Auth::check(); // only logged users
         $user = Login::user();
-        $useradds = $user->getAdds(); // get the user's adds
+        $userplaces = $user->hasMany('Place'); // get the user's places
 
         $this->loadView('user/home', [
             'user'=>Login::user(),
-            'useradds'=>$useradds
+            'userplaces'=>$userplaces
         ]);
     }
 
@@ -43,7 +43,6 @@ class UserController extends Controller{
         }
         $user = User::find($id); // get the user
         $roles = $user->getRoles(); // get the user's roles
-        $useradds = $user->getAdds(); // get the user's adds
 
         if(!$user){
             throw new NotFoundException("No s'ha trobat l'usuari indicat");
@@ -52,8 +51,7 @@ class UserController extends Controller{
         //Loads the view and pass the member
         $this->loadView('user/show',[
             'user' => $user,
-            'roles' => $roles,
-            'useradds'=> $useradds
+            'roles' => $roles
         ]);
     }
 
@@ -96,29 +94,15 @@ class UserController extends Controller{
                 $user->update();
             }
 
-            // send email with the user's details
-
-            // prepare the message
-            $to       = $user->email;
-            $from     = "hello@fastlight.com";
-            $name     = "New account";
-            $subject  = "Welcome to Dynamo Classified Adds";
-            $message  = "Welcome";
-            
-            // send email
-            (new Email($to, $from, $name, $subject, $message))->send();
-            Session::success("New user created. Confirmation email sent");
-            redirect('/Login/index');
-
             // update the user details with picture
 
-            if(Upload::arrive('picture')){
+            if(Upload::arrive('picture')){  // FIXME error de tipus de fitxer incorrecte. A BBDD és OK
                 $user->picture = Upload::save(
                     'picture', 
                     '../public/'.USER_IMAGE_FOLDER,
                     true,
                     0,  // max size
-                    'image/*', // mime type
+                    'image/*', // mime type F
                     'user_'
                 );
                 $user->update();
@@ -140,13 +124,6 @@ class UserController extends Controller{
                 throw new Exception($e->getMessage());
             else
                 redirect("/Login/index");
-        }catch(EmailException $e){
-            Session::error("Email not sent, contact with the webmaster.");
-            
-            if(DEBUG)
-                throw new Exception($e->getMessage());
-            else
-                redirect("/Login/index");       
         }
     }  
  
@@ -192,7 +169,7 @@ class UserController extends Controller{
             $user->updated_at = $stringDate;
             $user->update();
 
-            $secondUpdate = false;
+            //$secondUpdate = false;
             $oldPhoto = $user->picture;
 
             if(Upload::arrive('picture')){ 
@@ -204,41 +181,25 @@ class UserController extends Controller{
                     'image/*',
                     'user_'
                 );
-                $secondUpdate = true;
+                
             }
 
-            if(isset($_POST['eliminarfoto']) && $oldPhoto && !Upload::arrive('picture')){
-                $user->picture = NULL;
-                $secondUpdate = true;
-            }
+            $user->update();
+            @unlink('../public/'.USER_IMAGE_FOLDER.'/'.$oldPhoto); 
 
-            if($secondUpdate){
-                $user->update();
-                @unlink('../public/'.USER_IMAGE_FOLDER.'/'.$oldPhoto); 
-            }
-
-            if($_POST['block'] == "block"){
-                $current_date = new DateTime('now');
-                $stringDate = $current_date->format('Y-m-d H:i:s');
-                $user->blocked_at = $stringDate;
-                $user->update();
-            }else {
-                $user->blocked_at = NULL;
-                $user->update();
-            }
-
-            Session::success("Actualitzat l'usuari '$user->displayname' correctament");
-            redirect("/User/show/$id");
+            Session::success("User details of '$user->displayname' successfuly updated");
+            redirect("/User/home"); //FIXME els canvis no es mostren al home de l'usuari (si a la BBDD)
+           
 
         }catch(SQLException $e){
-            Session::error("No s'ha pogut actualitzar l'usuari '$user->displayname'");
+            Session::error("Unable to update User details of '$user->displayname'");
             if(DEBUG) // if debug mode is enabled
                 throw new Exception($e->getMessage());
             else
                 redirect("/User/edit/$id");
         }catch(UploadException $e){
 
-            Session::warning("L'usuari s'ha actualitzat correctament, però no s'ha pogut pujar la imatge");
+            Session::warning("User details updated. Unable to upload profile picture");
 
             if(DEBUG)
                 throw new Exception($e->getMessage());
@@ -247,26 +208,48 @@ class UserController extends Controller{
         }
     }
 
+
+    // show the delete confirmation form
+    public function delete(int $id=0){
+        // check if the id is received
+        if(!$id)
+            throw new Exception("No user account to delete has been received");
+        // get the book with the id
+        $usertodelete = User::find($id);
+
+        //check if the book exists
+        if(!$usertodelete)
+            throw new NotFoundException("User account with id $id does not exist");
+
+        $this->loadView('user/delete', ['usertodelete' => $usertodelete]);
+    }
+
     // delete the user
     public function destroy(int $id=0){
 
-        
+        // check if the form is received
+        if(!$this->request->has('delete'))
+            throw new Exception("No confirmation received");
 
-        if(!$user = User::find($id))
-            throw new Exception("User with id $id not found");
+        $id = intval($this->request->post('id')); // get the id
+        $usertodelete = User::findOrFail($id); // get the user
+
+        if(!$usertodelete)
+            throw new Exception("User account with id $id not found");
 
         try{
             User::delete($id);
-            if($user->picture)
-                    @unlink('../public/'.USER_IMAGE_FOLDER.'/'.$user->picture);
-            Session::flash('success', 'User deleted');
-            redirect("/User/list");
+            if($usertodelete->picture)
+                    @unlink('../public/'.USER_IMAGE_FOLDER.'/'.$usertodelete->picture);
+            Session::success("User account of '$usertodelete->displayname' successfuly deleted");
+            Session::destroy();
+            redirect("/");
         }catch(SQLException $e){
-            Session::flash('error', 'User could not be deleted');
+            Session::flash('error', 'User account could not be deleted');
             if(DEBUG)
                 throw new Exception($e->getMessage());
             else
-                redirect("/User/edit/$user->id");
+                redirect("/User/edit/$usertodelete->id");
         }
     }
 

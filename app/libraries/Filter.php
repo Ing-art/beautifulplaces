@@ -113,14 +113,14 @@ class Filter{
     public function __toString():string{
         
         $texto = empty($this->text) ?
-            "Todos los resultados. " :
-            "Datos filtrados por <b>'$this->field'</b> = <b>'$this->text'</b>. ";
+            "All results. " :
+            "Results filtered by <b>'$this->field'</b> = <b>'$this->text'</b>. ";
         
-        $texto .= "Ordenado por <b>'$this->orderField'</b> ";
+        $texto .= "Ordered by <b>'$this->orderField'</b> ";
         
         $texto .= $this->order == 'ASC'?
-            " ascendente. " :
-            " descendente. ";
+            " ascending. " :
+            " descending. ";
                 
        return $texto;
     }

@@ -38,20 +38,25 @@ class Template implements TemplateInterface{
         // si el usuario no está identificado, retorna el botón de LogIn
         if(Login::guest())
             return "
+            <div class='derecha'>
+               <div class='derecha'>
+                    <a class='button' href='/User/create'>Create Account</a>
+                </div>
                <div class='derecha'>
                     <a class='button' href='/Login'>LogIn</a>
                </div>
+            </div>
         ";
         
         $user = Login::user(); // recupera el usuario identificado
           
         // si el usuario es administrador...
-        if(Login::isAdmin())
+        if(Login::isAdmin())  //TODO redirect to admin's home page
             return "
                  <div class='derecha'>
                     <span>Welcome <a class='negrita' href='/User/home'>$user->displayname</a> 
                     (<span class='cursiva'>$user->email</span>)
-                    , you are <a class='negrita' href='/Admin'>admin</a>.</span> 
+                    , you are <a class='negrita' href='/User/home'>admin</a>.</span> 
                     <a class='button' href='/Logout'>LogOut</a>
                  </div>
             ";  
@@ -99,7 +104,7 @@ class Template implements TemplateInterface{
     public static function getMenu(){ 
         $html  = "<ul class='navBar'>";
         $html  = "<menu>";
-        $html .=   "<li><a href='/'>Start</a></li>";
+        $html .=   "<li><a href='/'>Home</a></li>";
 
         if(Login::check())
         $html .= "<li><a href='/User/home'>Account</a></li>";
@@ -113,12 +118,10 @@ class Template implements TemplateInterface{
             $html .=   "<li><a href='/test'>Tests</a></li>";
     
         // Links to the places list 
-        $html .= "<li><a href='/Place'>Places List</a></li>";
+        $html .= "<li><a href='/Place/list'>Places</a></li>";
 
         if(Login::oneRole(['ROLE_USER']))
             $html .= "<li><a href='/Place/create'>New Place</a></li>";
-        if(Login::guest())
-            $html.="<li><a href='/User/create'>New Account</a></li>";
 
         $html .= "<li><a href='/Contact'>Contact</a></li>";
 
@@ -135,7 +138,7 @@ class Template implements TemplateInterface{
     // retorna el elementos migas
     public static function getBreadCrumbs(array $migas = []):string{
         // asegura que esté el enlace a Inicio
-        $migas = ["Start"=>"/"]+$migas; 
+        $migas = ["Home"=>"/"]+$migas; 
         
         // preparamos el migas a partir del array 
         $html = "<nav aria-label='Breadcrumb' class='breadcrumbs'>";

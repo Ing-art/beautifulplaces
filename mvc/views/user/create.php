@@ -47,7 +47,7 @@
                 <h1>Create a new account</h1>
                 <h2>Personal details</h2>
                     <form method="POST" action="/User/store" enctype = "multipart/form-data">
-                        <label>Name</label>
+                        <label>Username</label>
                         <input type="text" name="displayname" value="<?= old('displayname') ?>">
                         <br>
                         <label>E-mail</label>
@@ -78,7 +78,7 @@
             </div> 
             <div class="centrado">
                 <a class="button" onclick="history.back()">Back</a>
-                <a class="button" href="/Add/list">Ad list</a>
+                <a class="button" href="/Place/list">Places</a>
             </div>
         </main>
         <?= (TEMPLATE)::getFooter() ?>

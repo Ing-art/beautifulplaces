@@ -9,3 +9,100 @@ Error: 19/04/2024 17:33:48 - Call to undefined method User::getAdds()
 Error: 19/04/2024 17:35:24 - Call to undefined method User::getAdds()
 Error: 19/04/2024 17:36:28 - Call to undefined method User::getAdds()
 Error: 19/04/2024 17:38:43 - Call to undefined method User::getAdds()
+Error: 19/04/2024 20:41:05 - Call to undefined method User::getAdds()
+Exception: 19/04/2024 21:01:57 - No se recibió fichero con la clave picture
+ViewException: 20/04/2024 09:43:54 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Failed opening required '../mvc/views//place/list.php' (include_path='C:\xampp\php\PEAR')</p>
+ViewException: 20/04/2024 09:50:46 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Undefined constant "ADD_IMAGE_FOLDER"</p>
+NotFoundException: 20/04/2024 09:51:14 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:53:34 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:53:40 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:53:52 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:55:46 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:55:59 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:56:03 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:56:55 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:57:01 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:57:22 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:58:10 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:58:11 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:58:11 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:58:12 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:58:12 - La URL indicada no existe.
+NotFoundException: 20/04/2024 09:59:55 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:01:51 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:04:07 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:08:24 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:09:31 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:12:41 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:14:29 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:16:24 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:18:29 - La URL indicada no existe.
+NotFoundException: 20/04/2024 10:18:41 - La URL indicada no existe.
+Exception: 20/04/2024 11:36:20 - User not received
+Exception: 20/04/2024 11:37:32 - User not received
+Exception: 20/04/2024 11:38:52 - Data not received
+Error: 20/04/2024 11:42:03 - Call to undefined method User::getAdds()
+ViewException: 20/04/2024 11:44:20 - <p>ERROR en la vista <b>../mvc/views/user/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Failed opening required '../mvc/views/user/show.php' (include_path='C:\xampp\php\PEAR')</p>
+Error: 20/04/2024 12:11:50 - Call to undefined method User::home()
+NotFoundException: 20/04/2024 12:14:08 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:18 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:36 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:42 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:43 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:43 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:43 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:43 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:44 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:44 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:44 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:44 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:14:44 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:15:01 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:21:18 - La URL indicada no existe.
+NotFoundException: 20/04/2024 12:22:55 - La URL indicada no existe.
+Exception: 20/04/2024 12:35:13 - User account with id 0 not found
+Exception: 20/04/2024 12:37:37 - User account with id 0 not found
+Exception: 20/04/2024 12:45:11 - No se pudo enviar el email.
+Exception: 20/04/2024 12:45:11 - <p>ERROR EN LA CONSULTA:</p><p><b>INSERT INTO users (password, displayname, email, phone, roles) VALUES ('81dc9bdb52d04dc20036dbd8313ed055', 'moderator', 'moderator@fastlight.com', '111111', '["ROLE_USER"]')</b></p><p>Duplicate entry 'moderator@fastlight.com' for key 'email'</p>
+Exception: 20/04/2024 12:49:52 - No se pudo enviar el email.
+Exception: 20/04/2024 12:53:13 - El fichero no es de tipo image/*
+Exception: 20/04/2024 13:11:06 - El fichero no es de tipo image/*
+NotFoundException: 20/04/2024 13:16:31 - La URL indicada no existe.
+NotFoundException: 20/04/2024 13:16:43 - La URL indicada no existe.
+SQLException: 20/04/2024 13:18:02 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:18:22 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:20:24 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:21:58 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:23:55 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:24:53 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:27:11 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:27:18 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:27:27 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:43:21 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:44:40 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:45:42 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:46:03 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:48:29 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:48:31 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:48:34 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:48:57 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:50:05 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 13:52:39 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+ViewException: 20/04/2024 13:56:54 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Unclosed '{' on line 57</p>
+ViewException: 20/04/2024 13:57:19 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Undefined constant Login::guest</p>
+ArgumentCountError: 20/04/2024 14:30:55 - Too few arguments to function PhotoController::create(), 0 passed in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 67 and exactly 1 expected
+Exception: 20/04/2024 14:35:50 - <p>ERROR EN LA CONSULTA:</p><p><b>INSERT INTO photos (name, description, date, time, iduser, idplace) VALUES ('White sand', 'Lore ipsum', '2024-04-01', '18:35', '1', NULL)</b></p><p>Column 'idplace' cannot be null</p>
+ParseError: 20/04/2024 14:59:22 - syntax error, unexpected token "=>", expecting ")"
+ViewException: 20/04/2024 15:39:56 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Call to undefined function vardump()</p>
+ParseError: 20/04/2024 15:50:59 - syntax error, unexpected token "=", expecting "]"
+Error: 20/04/2024 16:10:34 - Undefined constant "photo"
+Error: 20/04/2024 16:12:35 - Undefined constant "photo"
+Error: 20/04/2024 16:14:55 - Undefined constant "photo"
+SQLException: 20/04/2024 16:32:18 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 20/04/2024 16:36:36 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>

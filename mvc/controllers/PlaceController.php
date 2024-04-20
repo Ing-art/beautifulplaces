@@ -24,7 +24,7 @@ class PlaceController extends Controller{
     
         $places = $filtro ?  // is there a filter?
                 Place::filter($filtro, $limit, $paginator->getOffset()) : // filtered
-                Place::orderBy('name', 'ASC', $limit, $paginator->getOffset());
+                Place::orderBy('created_at', 'DESC', $limit, $paginator->getOffset());
 
     
         $this->loadView('/place/list', [
@@ -35,16 +35,26 @@ class PlaceController extends Controller{
     }
 
     // Method to show the place details
-    public function show(int $id = 0){
+    public function show(int $id = 0){  //FIXME error en voler veure una foto sense creador (usuari eliminat)
         // Check if the id is received as a parameter
         if(!$id){
             throw new Exception("No place id received");         
         }
+
         $place = Place::find($id); // get the place by the id
         $userid = $place->belongsTo('User')->id; // belongsTo method (See MODEL)
         
+
+        if(!$place->belongsTo('User')->id){
+            $creator = "Unknown";    
+        }else{
+            $creator = $place->belongsTo('User')-> displayname;
+        }
+
+      
         if(!Login::guest()){
             $loggeduserid = Login::user()->id;
+            
         }else{
             $loggeduserid = NULL;
         }
@@ -52,15 +62,40 @@ class PlaceController extends Controller{
 
         if(!$place){
             throw new NotFoundException("The place was not found");
+        } 
+
+        // Check if the id is received as a parameter
+        if(!$id){
+            throw new Exception("No place id received");         
         }
+
+        $photos = Place::findOrFail($id)->hasMany('Photo');
+
+        $files = [];
+        $filenames = [];
+        
+        foreach($photos as $photo){
+            $files[] = $photo->file;
+        }
+    
+        foreach($photos as $photo){
+            $filenames[] = $photo->name;
+        }
+
 
         //Loads the view and pass the place 
         $this->loadView('place/show',[
             'place' => $place,
-            'userid'=> $userid,
-            'loggeduserid'=> $loggeduserid
+            'loggeduserid'=> $loggeduserid,
+            'userid' => $userid,
+            'creator' => $creator,
+            'filenames' => $filenames,
+            'files' => $files,
+            'photos' => $photos
+        
         ]);
     }
+
 
     // Method to show the input form
     public function create(){
@@ -73,15 +108,15 @@ class PlaceController extends Controller{
         if(!Login::guest()){
             $user = Login::user();
             $userid = $user->id;
+        
         }else{
             $userid = NULL;
         }
 
 
         $this->loadView('place/create',[
-            'userid' => $userid
-        ]
-    );
+            'userid' => $userid]
+        );
     }
 
     // Method to save the place
@@ -92,10 +127,10 @@ class PlaceController extends Controller{
         }
         $place = new Place(); // create a new place
         $place->name                     =$this->request->post('name');
-        $place->description               =$this->request->post('description');
+        $place->description              =$this->request->post('description');
         $place->type                     =$this->request->post('type');
-        $place->location                  =$this->request->post('location');
-        $place->iduser                    =$this->request->post('userid');
+        $place->location                 =$this->request->post('location');
+        $place->iduser                   =$this->request->post('userid');
 
        
         // with the try-catch the redirection to the error page is avoided
@@ -111,13 +146,13 @@ class PlaceController extends Controller{
                     true,
                     2524000,
                     'image/*',
-                    'cover_'
+                    'place_'
                 );
                 $place->update();
             }
 
             Session::success("The place: $place->name has been saved");
-            redirect("/user/home");// redirect to the home page
+            redirect("/");// TODO redirect to the home page
 
         }catch(SQLException $e){
             Session::error("The place: $place->name could not be saved");
@@ -137,7 +172,7 @@ class PlaceController extends Controller{
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/place/show/$place->id");
+                    redirect("/");  // TODO redirect as per user case
 
         }
     }      
@@ -159,9 +194,10 @@ class PlaceController extends Controller{
 
 
         if(!Login::guest()){
-            $userid = $place->belongsTo('User')->id; // belongsTo method (MODEL)
+            $userid = $place->belongsTo('User')->id; // get the place creator id
+            $loggeduser = Login::user();
             $loggeduserid = Login::user()->id;
-            if($userid != $loggeduserid){
+            if($userid != $loggeduserid){ // if the user is not the creator 
                 Session::error("Unauthorised operation!");
                 redirect("/place/show/$place->id");
             }
@@ -209,26 +245,28 @@ class PlaceController extends Controller{
             $place->update();
 
             if(Upload::arrive('picture')){
-                $place->picture = Upload::save(
-                'picture', '../public/'.PLACE_IMAGE_FOLDER, true, 0, 'image/*', 'cover_');
+                $place->cover = Upload::save(
+                'picture', '../public/'.PLACE_IMAGE_FOLDER, true, 0, 'image/*', 'place_');
             }
             $place->update();
 
             Session::success("Place: '$place->name' successfully updated");
-            redirect("/place/show/$id");
+            redirect("/"); //TODO redirect as per use case
 
         }catch(SQLException $e){
             Session::error("Place: '$place->name' could not be updated");
             if(DEBUG) // if debug mode is enabled
                 throw new Exception($e->getMessage());
             else
-                redirect("/place/show/$id");
+                redirect("/"); // TODO redirect as per use case
         }
     }
 
     // show the delete confirmation form
     public function delete(int $id=0){
         Auth::check();
+
+        $loggeduser = Login::user();
 
         // check if the id is received
         if(!$id)
@@ -241,9 +279,9 @@ class PlaceController extends Controller{
             throw new NotFoundException("Place with id $id does not exist");
      
         // check if the user is authorised
-        if(!Login::isAdmin() && Login::user()->id != $place->iduser){
+        if(!Login::isAdmin() && Login::user()->id != $place->iduser && !$loggeduser->oneRole(['ROLE_MODERATOR'])){
             Session::error("Unauthorised operation!");
-            redirect('welcome');
+            redirect('/');
         }
 
         $this->loadView('place/delete', ['place' => $place]);
@@ -265,17 +303,17 @@ class PlaceController extends Controller{
             try{
                 $place->deleteObject();
 
-                if($place->picture)
-                    @unlink('../public/'.PLACE_IMAGE_FOLDER.'/'.$place->picture);
+                if($place->cover)
+                    @unlink('../public/'.PLACE_IMAGE_FOLDER.'/'.$place->cover);
                 
                 Session::success("Place '$place->name' has been deleted");
-                redirect("/User/home");
+                redirect("/"); //TODO redirect as per use case
             }catch(SQLException $e){
                 Session::error("Place '$place->name' could not be deleted");
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/place/delete/$id");
+                    redirect("/"); //TODO redirect as per use case
             }
     }
 
