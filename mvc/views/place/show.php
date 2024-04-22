@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Place details |<?=APP_NAME ?></title>
+        <title>Place details | <?=APP_NAME ?></title>
         <!--META-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Place details | <?=APP_NAME ?>">
@@ -58,7 +58,6 @@
                         <a class='button' href='/Photo/create/<?=$place->id ?>'>Add Photo</a>
                         <?php } ?>
                 </div>
-
                 <section>
                 <h2>Photos</h2>
                 <p>Click for comments and details</p>
@@ -77,7 +76,28 @@
                 </section>
                 <section>
                     <h2>Comments</h2>
+                    <div class="flex-container">
+                        <ul>
+                        <?php  
+                            
+                            foreach($comments as $comment){?>
+                                <li><?=User::findOrFail($comment->iduser)->displayname?> on <?=$comment->created_at?></li>
+                                <li  style="list-style-type:none;"><?=$comment->text?></li>
+                                <br>
+                        <?php }
+                     ?>
+                     </ul>
+                </div>
                 </section>
+                <section class="flex1">
+                    <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
+                         <!--hidden input with the place id to edit-->
+                        <input type="hidden" name="idplace" value="<?=$place->id?>">
+                        <textarea type="text" name="text" value="<?= old('text') ?>">Add a comment..</textarea>
+                        <br>
+                        <input type="submit" class="button" name="save" value="Submit">
+                </form>
+            </section> 
 
                     
         </main>

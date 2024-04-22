@@ -14,7 +14,7 @@ class UserController extends Controller{
         ]);
     }
 
-    public function list(int $page = 1, string $lang = 'ca'){
+    public function list(int $page = 1, string $lang = 'en'){
         // Get the user list and loads the view
         // Within the view there will be a variable named $users
         $limit = RESULTS_PER_PAGE; // max number of results per page
@@ -39,13 +39,13 @@ class UserController extends Controller{
     public function show(int $id = 0){
         // Check if the id is received as a parameter
         if(!$id){
-            throw new Exception("No s'ha indicat l'usuari a mostrar.");         
+            throw new Exception("No user to show.");         
         }
         $user = User::find($id); // get the user
         $roles = $user->getRoles(); // get the user's roles
 
         if(!$user){
-            throw new NotFoundException("No s'ha trobat l'usuari indicat");
+            throw new NotFoundException("User not found");
         }
 
         //Loads the view and pass the member
@@ -96,16 +96,16 @@ class UserController extends Controller{
 
             // update the user details with picture
 
-            if(Upload::arrive('picture')){  // FIXME error de tipus de fitxer incorrecte. A BBDD és OK
+            if(Upload::arrive('picture')){  // FIXME error de tipus de fitxer incorrecte. A BBDD és OK!!
                 $user->picture = Upload::save(
                     'picture', 
                     '../public/'.USER_IMAGE_FOLDER,
                     true,
                     0,  // max size
-                    'image/*', // mime type F
+                    'image/*', // mime type 
                     'user_'
                 );
-                $user->update();
+                $user->update(); // FIXME newuser id??
             }
             Session::success("Account for $user->displayname successfully created");
             redirect("/Login/index");
@@ -188,7 +188,8 @@ class UserController extends Controller{
             @unlink('../public/'.USER_IMAGE_FOLDER.'/'.$oldPhoto); 
 
             Session::success("User details of '$user->displayname' successfuly updated");
-            redirect("/User/home"); //FIXME els canvis no es mostren al home de l'usuari (si a la BBDD)
+            Login::set(User::findOrFail($id));
+            redirect("/User/home"); 
            
 
         }catch(SQLException $e){

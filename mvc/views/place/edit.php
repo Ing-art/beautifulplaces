@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Edit place |<?=APP_NAME ?></title>
+        <title>Edit place | <?=APP_NAME ?></title>
         <!--META-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Edit place <?=APP_NAME ?>">

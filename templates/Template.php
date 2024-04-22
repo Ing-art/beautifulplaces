@@ -51,7 +51,7 @@ class Template implements TemplateInterface{
         $user = Login::user(); // recupera el usuario identificado
           
         // si el usuario es administrador...
-        if(Login::isAdmin())  //TODO redirect to admin's home page
+        if(Login::isAdmin())  //redirect to admin's home page
             return "
                  <div class='derecha'>
                     <span>Welcome <a class='negrita' href='/User/home'>$user->displayname</a> 
@@ -116,7 +116,11 @@ class Template implements TemplateInterface{
         // enlace a los tests de ejemplo (solamente administrador)    
         if(Login::isAdmin() && (DEBUG))
             $html .=   "<li><a href='/test'>Tests</a></li>";
-    
+
+        // Link to user list
+        if(Login::isAdmin())
+            $html .= "<li><a href='/User/list'>User list</a></li>";
+ 
         // Links to the places list 
         $html .= "<li><a href='/Place/list'>Places</a></li>";
 

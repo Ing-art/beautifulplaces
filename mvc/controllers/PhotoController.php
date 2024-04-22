@@ -2,7 +2,7 @@
 
 class PhotoController extends Controller{
 
-        // Method to show the place details
+        // Method to show the photo details
         public function show(int $id = 0){  //FIXME error en voler veure una foto sense creador (usuari eliminat)
             // Check if the id is received as a parameter
             if(!$id){
@@ -45,23 +45,6 @@ class PhotoController extends Controller{
                 'creator' => $creator
             ]);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // Method to show the input form
@@ -141,5 +124,138 @@ class PhotoController extends Controller{
                     redirect("/");  // TODO redirect as per user case
 
         }
-    }      
+    }
+
+    // Show the edit form
+    public function edit(int $id=0){
+
+        // get the userid of the logged user
+
+        $place = Place::find($id); // get the place by the id
+        if(!$id){
+            throw new Exception("Place id not received");
+        }
+
+        if(!$place){
+            throw new NotFoundException("Place not found");
+        }
+
+
+        if(!Login::guest()){
+            $userid = $place->belongsTo('User')->id; // get the place creator id
+            $loggeduser = Login::user();
+            $loggeduserid = Login::user()->id;
+            if($userid != $loggeduserid){ // if the user is not the creator 
+                Session::error("Unauthorised operation!");
+                redirect("/place/show/$place->id");
+            }
+
+        }else{
+            Session::error("Unauthorised operation!");
+            redirect("/place/show/$place->id");
+        }
+
+
+        $this->loadView('place/edit',[
+            'place' => $place,
+            'userid' => $userid
+        ]);
+    }
+
+    // Update the photo details from the edit form
+    public function update(){
+        Auth::check();
+
+        if(!$this->request->has('edit')) // if the form is not received 
+        throw new Exception("Data not received");
+
+        $id = intval($this->request->post('id')); // get the id via POST
+        $photo = Photo::findOrFail($id); // get the id from the DB
+        $place = $photo->belongsTo('Place'); 
+
+        if(Login::user()->id != $photo->iduser || Login::guest()){
+            Session::error("Unauthorised operation!");
+            redirect("/photo/show/$photo->id");
+        }
+
+       
+        if(!$photo) //if the photo is not found in the DB
+            throw new NotFoundException("Photo with id $id not found");
+        // get the rest of the fields
+        $currentDateTime = date('Y-m-d H:i:s');
+        $photo->name                   = $this->request->post('name');
+        $photo->description             = $this->request->post('description');
+        $photo->updated_at              = $currentDateTime;
+
+
+        try{
+            $photo->update();
+            Session::success("Photo: '$photo->name' successfully updated");
+            redirect("/place/show/$place->id"); //TODO redirect as per use case
+
+        }catch(SQLException $e){
+            Session::error("Photo: '$photo->name' could not be updated");
+            if(DEBUG) // if debug mode is enabled
+                throw new Exception($e->getMessage());
+            else
+                redirect("/photo/show/$id"); // TODO redirect as per use case
+        }
+    }
+
+    // show the delete confirmation form
+    public function delete(int $id=0){
+        Auth::check();
+
+        $loggeduser = Login::user();
+
+        // check if the id is received
+        if(!$id)
+            throw new Exception("Photo to delete not specified");
+
+        $photo = Photo::findOrFail($id); // get the id from the DB
+
+        //check if the place exists
+        if(!$photo)
+            throw new NotFoundException("Photo with id $id does not exist");
+     
+        // check if the user is authorised
+        if(!Login::isAdmin() && Login::user()->id != $photo->iduser && !$loggeduser->oneRole(['ROLE_MODERATOR'])){
+            Session::error("Unauthorised operation!");
+            redirect('/photo/show/$id'); // TODO redirect as per use case
+        }
+
+        $this->loadView('photo/delete', ['photo' => $photo]);
+    }
+    
+    // delete the photo
+    public function destroy(){
+        // check if the form is received
+        if(!$this->request->has('delete'))
+            throw new Exception("No confirmation received");
+
+        $id = intval($this->request->post('id')); // get the id
+        $photo = Photo::findOrFail($id); // get the photo
+        $place = $photo->belongsTo('Place');
+
+        // check if the photo exists
+        if(!$photo)
+            throw new NotFoundException("Photo with $id not found");
+
+            try{
+                $photo->deleteObject();
+
+                if($photo->file)
+                    @unlink('../public/'.PLACE_IMAGE_FOLDER.'/'.$photo->file);
+                
+                Session::success("Photo '$photo->name' has been deleted");
+                redirect("/place/show/$place->id"); 
+            }catch(SQLException $e){
+                Session::error("Photo '$photo->name' could not be deleted");
+                if(DEBUG)
+                    throw new Exception($e->getMessage());
+                else
+                    redirect("/photo/show/$photo->id"); //TODO redirect as per use case
+            }
+    }
+    
 }

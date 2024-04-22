@@ -106,3 +106,8 @@ Error: 20/04/2024 16:12:35 - Undefined constant "photo"
 Error: 20/04/2024 16:14:55 - Undefined constant "photo"
 SQLException: 20/04/2024 16:32:18 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
 SQLException: 20/04/2024 16:36:36 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+Exception: 22/04/2024 09:04:33 - El fichero no es de tipo image/*
+NotFoundException: 22/04/2024 10:06:04 - Place not found
+SQLException: 22/04/2024 12:34:01 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM comments WHERE idcomment = 1</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
+SQLException: 22/04/2024 12:35:10 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM comments WHERE idcomment = 1</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
+NotFoundException: 22/04/2024 12:39:26 - No se encontró la entidad buscada.

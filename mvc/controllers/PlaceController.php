@@ -44,6 +44,7 @@ class PlaceController extends Controller{
         $place = Place::find($id); // get the place by the id
         $userid = $place->belongsTo('User')->id; // belongsTo method (See MODEL)
         
+        
 
         if(!$place->belongsTo('User')->id){
             $creator = "Unknown";    
@@ -70,17 +71,8 @@ class PlaceController extends Controller{
         }
 
         $photos = Place::findOrFail($id)->hasMany('Photo');
+        $comments = Place::findOrFail($id)->hasMany('Comment');
 
-        $files = [];
-        $filenames = [];
-        
-        foreach($photos as $photo){
-            $files[] = $photo->file;
-        }
-    
-        foreach($photos as $photo){
-            $filenames[] = $photo->name;
-        }
 
 
         //Loads the view and pass the place 
@@ -89,10 +81,9 @@ class PlaceController extends Controller{
             'loggeduserid'=> $loggeduserid,
             'userid' => $userid,
             'creator' => $creator,
-            'filenames' => $filenames,
-            'files' => $files,
-            'photos' => $photos
-        
+            'photos' => $photos,
+            'comments' => $comments
+
         ]);
     }
 
