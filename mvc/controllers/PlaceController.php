@@ -44,8 +44,6 @@ class PlaceController extends Controller{
         $place = Place::find($id); // get the place by the id
         $userid = $place->belongsTo('User')->id; // belongsTo method (See MODEL)
         
-        
-
         if(!$place->belongsTo('User')->id){
             $creator = "Unknown";    
         }else{
@@ -91,9 +89,9 @@ class PlaceController extends Controller{
     // Method to show the input form
     public function create(){
 
-        if(!Login::oneRole(['ROLE_USER'])){
+        if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR'])){
             Session::error("Unauthorised operation!");
-            redirect('/');
+            redirect('/Login'); //TODO redirect to login when logged in??
         }
 
         if(!Login::guest()){
@@ -116,6 +114,13 @@ class PlaceController extends Controller{
         if(!$this->request->has('save')){
             throw new Exception("No form received");
         }
+
+        if(!Upload::arrive('picture')){
+            Session::error("Please provide a cover image!");
+            redirect('/place/create');
+        }
+
+
         $place = new Place(); // create a new place
         $place->name                     =$this->request->post('name');
         $place->description              =$this->request->post('description');
@@ -129,7 +134,7 @@ class PlaceController extends Controller{
         try{
             $place->save(); //save the place
 
-            if(Upload::arrive('picture')){ // If there is an place picture
+            if(Upload::arrive('picture')){ // If there is a place picture
 
                 $place->cover = Upload::save(
                     'picture',
@@ -142,8 +147,8 @@ class PlaceController extends Controller{
                 $place->update();
             }
 
-            Session::success("The place: $place->name has been saved");
-            redirect("/");// TODO redirect to the home page
+            Session::success("A new place: $place->name has been saved");
+            redirect("/place/show/$place->id");// TODO redirect to the show page
 
         }catch(SQLException $e){
             Session::error("The place: $place->name could not be saved");
@@ -217,7 +222,7 @@ class PlaceController extends Controller{
 
         if(Login::user()->id != $place->iduser || Login::guest()){
             Session::error("Unauthorised operation!");
-            redirect("/place/show/$place->id");
+            redirect("/place/show/$place->id"); // TODO redirect to login??
         }
 
        
@@ -242,14 +247,14 @@ class PlaceController extends Controller{
             $place->update();
 
             Session::success("Place: '$place->name' successfully updated");
-            redirect("/"); //TODO redirect as per use case
+            redirect("/place/edit/$place->id"); // redirect as per use case
 
         }catch(SQLException $e){
             Session::error("Place: '$place->name' could not be updated");
             if(DEBUG) // if debug mode is enabled
                 throw new Exception($e->getMessage());
             else
-                redirect("/"); // TODO redirect as per use case
+                redirect("/place/edit/$place->id"); // redirect as per use case
         }
     }
 

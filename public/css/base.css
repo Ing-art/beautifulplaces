@@ -527,8 +527,8 @@ ul.listado li, ol.listado li{
 
 .cover{
 	width: 100%;
-	max-width: 280px;
-	max-height: 400px;
+	max-width: 590px;
+	max-height: 800px;
 	margin: 10px;
 }
 
@@ -538,3 +538,21 @@ ul.listado li, ol.listado li{
 	min-height: 360px;
 }
 
+/* Places image gallery */
+
+.big-centered{
+	min-width: 95%;
+	height: auto;
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+
+}
+
+.big-button{
+	display:block;
+	background-color:#600;
+	margin-left:auto;
+	margin-right:auto;
+	width:180px;
+}

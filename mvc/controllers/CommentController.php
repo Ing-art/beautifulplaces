@@ -5,9 +5,9 @@ class CommentController extends Controller{
 
     public function store(){
 
-        if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR'])){
+        if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR']) && Login::isAdmin()){
             Session::error("Unauthorised operation!");
-            redirect('/');
+            redirect('/Login');
         }
 
         $user = Login::user();

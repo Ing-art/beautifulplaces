@@ -36,13 +36,16 @@ class PhotoController extends Controller{
             if(!$id){
                 throw new Exception("Photo id not received");         
             }
+
+            $comments = Photo::findOrFail($id)->hasMany('Comment');
     
             //Loads the view and pass the photo 
             $this->loadView('photo/show',[
                 'photo' => $photo,
                 'loggeduserid'=> $loggeduserid,
                 'userid' => $userid,
-                'creator' => $creator
+                'creator' => $creator,
+                'comments' => $comments
             ]);
         }
 
@@ -57,7 +60,7 @@ class PhotoController extends Controller{
 
         if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR'])){
             Session::error("Unauthorised operation!");
-            redirect('/');
+            redirect("/place/show/$id"); 
         }
 
         $this->loadView('photo/create',[
@@ -73,6 +76,12 @@ class PhotoController extends Controller{
         if(!$this->request->has('save')){
             throw new Exception("No form received");
         }
+
+        if(!Upload::arrive('picture')){
+            Session::error("Please provide an image!");
+            redirect('/photo/create'); //FIXME no redirecciona
+        }
+
         $photo = new Photo(); // create a new photo
         $photo->name                     =$this->request->post('name');
         $photo->description              =$this->request->post('description');
@@ -101,7 +110,7 @@ class PhotoController extends Controller{
             }
 
             Session::success("The photo: $photo->name has been saved");
-            redirect("/");// TODO redirect as per use case
+            redirect("/place/show/$photo->idplace");// TODO redirect as per use case
 
         }catch(SQLException $e){
             Session::error("The photo: $photo->name could not be saved");
@@ -121,7 +130,7 @@ class PhotoController extends Controller{
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/");  // TODO redirect as per user case
+                    redirect("/photo/create");  // TODO redirect as per user case
 
         }
     }
@@ -131,33 +140,33 @@ class PhotoController extends Controller{
 
         // get the userid of the logged user
 
-        $place = Place::find($id); // get the place by the id
+        $photo = Photo::find($id); // get the photo by the id
         if(!$id){
-            throw new Exception("Place id not received");
+            throw new Exception("Photo id not received");
         }
 
-        if(!$place){
-            throw new NotFoundException("Place not found");
+        if(!$photo){
+            throw new NotFoundException("Photo not found");
         }
 
 
         if(!Login::guest()){
-            $userid = $place->belongsTo('User')->id; // get the place creator id
+            $userid = $photo->belongsTo('User')->id; // get the photo creator id
             $loggeduser = Login::user();
             $loggeduserid = Login::user()->id;
             if($userid != $loggeduserid){ // if the user is not the creator 
                 Session::error("Unauthorised operation!");
-                redirect("/place/show/$place->id");
+                redirect("/photo/show/$place->id");
             }
 
         }else{
             Session::error("Unauthorised operation!");
-            redirect("/place/show/$place->id");
+            redirect("/photo/show/$place->id");
         }
 
 
-        $this->loadView('place/edit',[
-            'place' => $place,
+        $this->loadView('photo/edit',[
+            'photo' => $photo,
             'userid' => $userid
         ]);
     }
@@ -171,7 +180,7 @@ class PhotoController extends Controller{
 
         $id = intval($this->request->post('id')); // get the id via POST
         $photo = Photo::findOrFail($id); // get the id from the DB
-        $place = $photo->belongsTo('Place'); 
+
 
         if(Login::user()->id != $photo->iduser || Login::guest()){
             Session::error("Unauthorised operation!");
@@ -191,14 +200,14 @@ class PhotoController extends Controller{
         try{
             $photo->update();
             Session::success("Photo: '$photo->name' successfully updated");
-            redirect("/place/show/$place->id"); //TODO redirect as per use case
+            redirect("/place/show/$photo->idplace"); 
 
         }catch(SQLException $e){
             Session::error("Photo: '$photo->name' could not be updated");
             if(DEBUG) // if debug mode is enabled
                 throw new Exception($e->getMessage());
             else
-                redirect("/photo/show/$id"); // TODO redirect as per use case
+                redirect("/photo/show/$id"); 
         }
     }
 

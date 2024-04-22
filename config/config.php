@@ -155,7 +155,7 @@ define('ADMIN_ROLE', 'ROLE_ADMIN');
  * REDIRECCIONES
  * -------------------------------------------------------------*/
     
-define('REDIRECT_AFTER_LOGIN', '/'); // Redirección tras login.
+define('REDIRECT_AFTER_LOGIN', '/User/home'); // Redirección tras login.
     
     
 /* -------------------------------------------------------------

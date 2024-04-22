@@ -28,7 +28,7 @@
             <div class="flex-container">  
             <section class="flex1">
             <h2>Edit photo</h2>
-            <form method="POST" action="/Place/update" class="flex1" enctype="multipart/form-data">
+            <form method="POST" action="/Photo/update" class="flex1" enctype="multipart/form-data">
                 <!--hidden input with the user id to edit-->
                 <input type="hidden" name="id" value="<?=$photo->id?>">
                 <!--form-->

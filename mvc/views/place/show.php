@@ -54,17 +54,28 @@
                         <a class='button' href='/Place/delete/<?=$place->id ?>'>Delete</a>
                         <?php }
 
-                    if(!Login::guest()){ ?>
-                        <a class='button' href='/Photo/create/<?=$place->id ?>'>Add Photo</a>
+                    if(Login::oneRole(['ROLE_USER','ROLE_MODERATOR']) && !Login::isAdmin()){ 
+                        if(sizeof($photos) == 0){
+                            $bigbuttonclass = 'big-button';
+                            $buttontext= "Add first photo";
+                        }else{
+                            $buttontext="Add photo";
+                        }?>
+                        <a class="button <?=$bigbuttonclass?>" href='/Photo/create/<?=$place->id ?>'><?=$buttontext?></a>
                         <?php } ?>
                 </div>
                 <section>
                 <h2>Photos</h2>
                 <p>Click for comments and details</p>
                 <div class="flex-container">
-                <?php       
+                <?php
+                    if(sizeof($photos) == 1)
+                        $class = 'big-centered';
+                    else
+                        $class = ''; 
+
                     foreach($photos as $photo){?>
-                        <figure class="flex1 centrado">
+                        <figure class="flex1 centrado <?=$class?>">
                         <a href='/Photo/show/<?=$photo->id?>'>
                             <img src="/images/places/<?=$photo->file?>"
                                 class="cover" alt="Photo"></a>

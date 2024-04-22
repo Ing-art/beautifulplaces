@@ -111,3 +111,24 @@ NotFoundException: 22/04/2024 10:06:04 - Place not found
 SQLException: 22/04/2024 12:34:01 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM comments WHERE idcomment = 1</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
 SQLException: 22/04/2024 12:35:10 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM comments WHERE idcomment = 1</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
 NotFoundException: 22/04/2024 12:39:26 - No se encontró la entidad buscada.
+NotFoundException: 22/04/2024 13:39:41 - La URL indicada no existe.
+NotFoundException: 22/04/2024 13:40:27 - La URL indicada no existe.
+NotFoundException: 22/04/2024 13:41:29 - La URL indicada no existe.
+NotFoundException: 22/04/2024 13:57:51 - La URL indicada no existe.
+NotFoundException: 22/04/2024 13:57:53 - La URL indicada no existe.
+NotFoundException: 22/04/2024 13:57:56 - La URL indicada no existe.
+NotFoundException: 22/04/2024 14:00:27 - La URL indicada no existe.
+NotFoundException: 22/04/2024 14:00:28 - La URL indicada no existe.
+NotFoundException: 22/04/2024 14:00:40 - La URL indicada no existe.
+NotFoundException: 22/04/2024 14:01:13 - La URL indicada no existe.
+NotFoundException: 22/04/2024 14:01:35 - La URL indicada no existe.
+NothingToFindException: 22/04/2024 15:11:56 - No se recibió el identificador.
+NothingToFindException: 22/04/2024 15:13:04 - No se recibió el identificador.
+NotFoundException: 22/04/2024 15:29:52 - No se encontró la entidad buscada.
+Error: 22/04/2024 15:29:56 - Call to a member function belongsTo() on null
+NotFoundException: 22/04/2024 15:56:39 - Place not found
+NotFoundException: 22/04/2024 16:00:43 - No se encontró la entidad buscada.
+NotFoundException: 22/04/2024 16:02:38 - No se encontró la entidad buscada.
+NotFoundException: 22/04/2024 16:03:34 - No se encontró la entidad buscada.
+Exception: 22/04/2024 16:04:04 - No place id received
+Exception: 22/04/2024 16:12:43 - No place id received

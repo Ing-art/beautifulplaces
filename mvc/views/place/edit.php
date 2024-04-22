@@ -37,7 +37,7 @@
                 <br>
                 <label>Type</label>
                     <select name="type">
-                        <option value="<?=$place->type?>" selected disabled> <!--TODO fer que es mostri el valor antic -->
+                        <option value="<?=$place->type?>" <?= oldSelected('type', $place->type) ?>selected><?=$place->type?></option> 
                         <option value="Buildings" <?= oldSelected('type', 'Buildings') ?>>Buildings</option>
                         <option value="Cities" <?= oldSelected('type', 'Cities') ?>>Cities</option>
                         <option value="Landscape" <?= oldSelected('type', 'Landscape') ?>>Landscape</option>                 

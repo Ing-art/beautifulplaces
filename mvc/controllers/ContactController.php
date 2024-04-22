@@ -24,6 +24,6 @@ class ContactController extends Controller{
         $email = new Email(ADMIN_EMAIL, $from, $name, $subject, $message);
         $email->send();
         Session::success("Message sent. We will get back to you shortly");
-        redirect('/');
+        redirect('/contact');
     }
 }

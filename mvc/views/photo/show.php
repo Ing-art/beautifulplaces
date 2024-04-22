@@ -52,11 +52,29 @@
                     <a class='button' href='/Photo/delete/<?=$photo->id ?>'>Delete</a>
                     <?php }?>
             </div>
-            <div class="flex-container">
-                <section class="flex1">
-                    <h2>Comments</h2>
+            <section>
+                <h2>Comments</h2>
+                    <div class="flex-container">
+                        <ul>
+                        <?php                           
+                            foreach($comments as $comment){?>
+                                <li style="font-weight:bold;"><?=User::findOrFail($comment->iduser)->displayname?> on <?=$comment->created_at?></li>
+                                <li  style="list-style-type:none;"><?=$comment->text?></li>
+                                <!--TODO delete link -->
+                                <br>
+                        <?php }
+                     ?>
+                     </ul>
+                </div>
                 </section>
-            </div>                
+                <section class="flex1">
+                    <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
+                        <input type="hidden" name="idphoto" value="<?=$photo->id?>">
+                        <textarea type="text" name="text" value="<?= old('text') ?>">Add a comment..</textarea>
+                        <br>
+                        <input type="submit" class="button" name="save" value="Submit">
+                </form>
+            </section>              
         </main>
         <?= (TEMPLATE)::getFooter() ?>
     </body>

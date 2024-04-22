@@ -77,6 +77,13 @@
                         <td class="centrado"><?=$place->description?></td>
                         <td class="centrado">
                             <a class="button" href='/Place/show/<?=$place->id ?>'>Show</a>
+                    <?php if(Login::user()->id == $place->belongsTo('User')->id){ ?>
+                            <a class='button' href='/Place/edit/<?=$place->id ?>'>Edit</a>
+                        <?php } ?>      
+                       <?php 
+                         if(Login::user()->id == $place->belongsTo('User')->id || Login::oneRole(['ROLE_ADMIN', 'ROLE_MODERATOR'])) { ?>
+                            <a class='button' href='/Place/delete/<?=$place->id ?>'>Delete</a>
+                        <?php } ?>
                         </td>
                     </tr>
                <?php } ?>

@@ -39,7 +39,7 @@ class UserController extends Controller{
     public function show(int $id = 0){
         // Check if the id is received as a parameter
         if(!$id){
-            throw new Exception("No user to show.");         
+            throw new Exception("No user to show");         
         }
         $user = User::find($id); // get the user
         $roles = $user->getRoles(); // get the user's roles
@@ -82,21 +82,9 @@ class UserController extends Controller{
         try{
             $user->save(); // save the user
 
-            if(Upload::arrive('picture')){
-                $user->picture = Upload::save(
-                    'picture', 
-                    '../public/'.USER_IMAGE_FOLDER,
-                    true,
-                    0,  // max size
-                    'image/*', // mime type
-                    'user_'
-                );
-                $user->update();
-            }
-
             // update the user details with picture
 
-            if(Upload::arrive('picture')){  // FIXME error de tipus de fitxer incorrecte. A BBDD és OK!!
+            if(Upload::arrive('picture')){  
                 $user->picture = Upload::save(
                     'picture', 
                     '../public/'.USER_IMAGE_FOLDER,
@@ -105,8 +93,9 @@ class UserController extends Controller{
                     'image/*', // mime type 
                     'user_'
                 );
-                $user->update(); // FIXME newuser id??
+                $user->update(); 
             }
+
             Session::success("Account for $user->displayname successfully created");
             redirect("/Login/index");
 
