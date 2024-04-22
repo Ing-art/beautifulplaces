@@ -13,6 +13,7 @@
 
         <!--CSS-->
         <?= (TEMPLATE)::getCss() ?>
+
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>

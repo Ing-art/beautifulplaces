@@ -40,6 +40,39 @@ class CommentController extends Controller{
             else
                 redirect("/");
         }
-    }  
+    }
+    
+    // delete a comment
+    public function destroy(int $id=0){
+        // check if the form is received
+
+        $id = intval($id);
+        $comment = Comment::findOrFail($id);
+
+        if(!$comment = Comment::findOrFail($id)){
+            throw new Exception('Comment not found');
+        }
+
+        if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || $comment->iduser == Login::user()->id){
+            Session::error("Unauthorised operation!");
+            redirect(isset($comment->idplace) ? "/place/show/{$comment->idplace}" : "/photo/show/{$comment->idphoto}");
+        }
+
+
+        try{
+            $comment->deleteObject();
+                
+            Session::success("Comment deleted");
+            redirect(isset($comment->idplace) ? "/place/show/{$comment->idplace}" : "/photo/show/{$comment->idphoto}");
+
+
+        }catch(SQLException $e){
+            Session::error("Comment could not be deleted");
+        if(DEBUG)
+            throw new Exception($e->getMessage());
+        else
+            redirect("/"); 
+        }
+    }
 
 }

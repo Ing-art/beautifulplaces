@@ -9,10 +9,10 @@
  *
  */
 
-class Custom implements TemplateInterface{
+class Template implements TemplateInterface{
     
     // ficheros CSS para usar con este template
-    protected static array $css = ['/css/bootstrap.css'];
+    protected static array $css = ['/css/base.css'];
     
     /*****************************************************************************
      * CSS
@@ -100,66 +100,40 @@ class Custom implements TemplateInterface{
     /*****************************************************************************
      * MENÚ
      *****************************************************************************/
-    // retorna el menú principal  
-    public static function getMenu(){ ?>
+    // retorna el menú principal
+    public static function getMenu(){ 
+        $html  = "<ul class='navBar'>";
+        $html  = "<menu>";
+        $html .=   "<li><a href='/'>Home</a></li>";
 
-        <!--Bootstrap menu-->
+        if(Login::check())
+        $html .= "<li><a href='/User/home'>Account</a></li>";
+        
+        // enlace a la gestión de errores (solamente administrador)
+        if(Login::isAdmin() && (DB_ERRORS || LOG_ERRORS || LOG_LOGIN_ERRORS))
+            $html .=   "<li><a href='/Error/list'>Error Log</a></li>";
+        
+        // enlace a los tests de ejemplo (solamente administrador)    
+        if(Login::isAdmin() && (DEBUG))
+            $html .=   "<li><a href='/test'>Tests</a></li>";
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="/images/template/logo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">Beautiful Places</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        // Link to user list
+        if(Login::isAdmin())
+            $html .= "<li><a href='/User/list'>User list</a></li>";
+ 
+        // Links to the places list 
+        $html .= "<li><a href='/Place/list'>Places</a></li>";
 
-            <div class="collapse navbar-collapse" id="navbarsExample05">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link <?= $titulo == "Welcome" ? 'active' : '' ?>" aria-current="page" href="/">Home</a>
-                    </li>
-                    <?php
-                        if(Login::check()){ ?> 
-                            <li class="nav-item">
-                                <a class="nav-link <?= $titulo == "My Account" ? 'active' : '' ?>" aria-current="page" href="/User/home">Account</a>
-                            </li>                   
-                    <?php } ?>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $titulo == "Places" ? 'active' : '' ?>" href="/Place/list">Places</a>
-                    </li>
-                    <?php
-                        if(Login::oneRole(['ROLE_USER'])){ ?>
-                            <li class="nav-item">
-                                <a class="nav-link <?= $titulo == "Create a new place" ? 'active' : '' ?>" href="/Place/create">New Place</a>
-                            </li>
-                    <?php   } ?>
+        if(Login::oneRole(['ROLE_USER']))
+            $html .= "<li><a href='/Place/create'>New Place</a></li>";
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= $titulo == "Contact" ? 'active' : '' ?>" href="/Contact">Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
-                        <ul class="dropdown-menu">
-                            <?php
-                                if(Login::isAdmin() && (DB_ERRORS || LOG_ERRORS || LOG_LOGIN_ERRORS)){ ?>
-                                    <li><a class="dropdown-item" href="/Error/list">Error log</a></li>         
-                            <?php }
+        $html .= "<li><a href='/Contact'>Contact</a></li>";
 
-                                if(Login::isAdmin() && (DEBUG)){ ?>
-                                    <li><a class="dropdown-item" href="/test">Tests</a></li>
-                            <?php } 
+        $html .= "</ul>";
+        
+        $html .= "</menu>";
 
-                                if(Login::isAdmin()){ ?> 
-                                
-                                    <li><a class="dropdown-item" href="/User/list">User management</a></li>                          
-                            <?php }?>                       
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-            </div>
-        </nav>
-        <?php
+        return $html;
     } 
         
     /*****************************************************************************

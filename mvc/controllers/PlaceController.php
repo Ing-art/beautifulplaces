@@ -32,10 +32,11 @@ class PlaceController extends Controller{
             'paginator' => $paginator, // pass the Paginator object to the view
             'filtro' => $filtro
         ]);
+
     }
 
     // Method to show the place details
-    public function show(int $id = 0){  //FIXME error en voler veure una foto sense creador (usuari eliminat)
+    public function show(int $id = 0){  
         // Check if the id is received as a parameter
         if(!$id){
             throw new Exception("No place id received");         
@@ -44,8 +45,9 @@ class PlaceController extends Controller{
         $place = Place::find($id); // get the place by the id
         $userid = $place->belongsTo('User')->id; // belongsTo method (See MODEL)
         
-        if(!$place->belongsTo('User')->id){
-            $creator = "Unknown";    
+        if(is_null($place->iduser)){ // if user is null (deleted)
+            $creator = "Unknown"; 
+               
         }else{
             $creator = $place->belongsTo('User')-> displayname;
         }
@@ -83,6 +85,8 @@ class PlaceController extends Controller{
             'comments' => $comments
 
         ]);
+
+
     }
 
 

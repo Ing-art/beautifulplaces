@@ -17,6 +17,7 @@
         <!--SCRIPT FOR IMAGE PREVIEW-->
 
         <script src="/js/Preview.js"></script>
+
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>
@@ -54,25 +55,25 @@
             </div>
             <section>
                 <h2>Comments</h2>
-                    <div class="flex-container">
-                        <ul>
+                    <div>
                         <?php                           
                             foreach($comments as $comment){?>
-                                <li style="font-weight:bold;"><?=User::findOrFail($comment->iduser)->displayname?> on <?=$comment->created_at?></li>
-                                <li  style="list-style-type:none;"><?=$comment->text?></li>
-                                <!--TODO delete link -->
-                                <br>
-                        <?php }
-                     ?>
-                     </ul>
-                </div>
-                </section>
-                <section class="flex1">
-                    <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
-                        <input type="hidden" name="idphoto" value="<?=$photo->id?>">
-                        <textarea type="text" name="text" value="<?= old('text') ?>">Add a comment..</textarea>
-                        <br>
-                        <input type="submit" class="button" name="save" value="Submit">
+                                <p style="font-weight:bold;"><?=User::findOrFail($comment->iduser)->displayname?> on <?=$comment->created_at?></p>
+                                <p style="list-style-type:none;"><?=$comment->text?></p>
+                                <?php 
+                                if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Login::user()->id == $comment->iduser){ ?>
+                                <p  style="list-style-type:none;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'">Delete</a></p>                           
+                        <?php } ?>
+                                <p>------------------------</p>
+                            <?php } ?>                           
+                    </div>
+            </section>
+            <section class="flex1">
+                <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
+                    <input type="hidden" name="idphoto" value="<?=$photo->id?>">
+                    <textarea type="text" name="text" value="<?= old('text') ?>">Add a comment..</textarea>
+                    <br>
+                    <input type="submit" class="button" name="save" value="Submit">
                 </form>
             </section>              
         </main>

@@ -13,13 +13,11 @@ class PhotoController extends Controller{
             $userid = $photo->belongsTo('User')->id; // belongsTo method (See MODEL)
             
     
-            if(!$photo->belongsTo('User')->id){
+            if(is_null($photo->iduser)){ //if user is null (deleted)
                 $creator = "Unknown";    
             }else{
                 $creator = $photo->belongsTo('User')-> displayname;
-            }
-    
-          
+            }       
             if(!Login::guest()){
                 $loggeduserid = Login::user()->id;
                 
@@ -152,7 +150,6 @@ class PhotoController extends Controller{
 
         if(!Login::guest()){
             $userid = $photo->belongsTo('User')->id; // get the photo creator id
-            $loggeduser = Login::user();
             $loggeduserid = Login::user()->id;
             if($userid != $loggeduserid){ // if the user is not the creator 
                 Session::error("Unauthorised operation!");

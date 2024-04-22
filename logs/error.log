@@ -132,3 +132,33 @@ NotFoundException: 22/04/2024 16:02:38 - No se encontró la entidad buscada.
 NotFoundException: 22/04/2024 16:03:34 - No se encontró la entidad buscada.
 Exception: 22/04/2024 16:04:04 - No place id received
 Exception: 22/04/2024 16:12:43 - No place id received
+TypeError: 22/04/2024 19:16:41 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+TypeError: 22/04/2024 19:25:35 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+TypeError: 22/04/2024 19:28:28 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+TypeError: 22/04/2024 19:29:52 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+TypeError: 22/04/2024 19:30:48 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+TypeError: 22/04/2024 19:33:04 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+TypeError: 22/04/2024 19:33:54 - PlaceController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\beautifulplaces\app\core\App.php on line 70
+ViewException: 22/04/2024 19:39:54 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p></p>
+ViewException: 22/04/2024 19:40:27 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p></p>
+ViewException: 22/04/2024 19:40:46 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p></p>
+ViewException: 22/04/2024 19:41:50 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p></p>
+ViewException: 22/04/2024 20:07:41 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Unclosed '{' on line 96</p>
+SQLException: 22/04/2024 20:15:27 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                     FROM users 
+                     WHERE idplace = 4</b></p><p>Unknown column 'idplace' in 'where clause'</p>
+SQLException: 22/04/2024 20:15:41 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                     FROM users 
+                     WHERE idplace = 3</b></p><p>Unknown column 'idplace' in 'where clause'</p>
+SQLException: 22/04/2024 20:17:38 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                     FROM users 
+                     WHERE idplace = 4</b></p><p>Unknown column 'idplace' in 'where clause'</p>
+NotFoundException: 22/04/2024 23:17:22 - La URL indicada no existe.
+NotFoundException: 22/04/2024 23:17:23 - La URL indicada no existe.
+NotFoundException: 22/04/2024 23:17:23 - La URL indicada no existe.
+NotFoundException: 22/04/2024 23:17:31 - La URL indicada no existe.

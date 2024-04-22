@@ -437,7 +437,7 @@ textarea{
 	padding: 8px 20px;
 	margin: 4px;
 	border-radius: 3px;
-	background-color: rgb(60, 100, 160);
+	background-color: black);
 	white-space: nowrap;
 	display: inline-block;
 	cursor: pointer;
@@ -478,14 +478,14 @@ textarea{
 
 /* tablas */
 table{
-	border: solid 1px rgb(60, 100, 160);
+	border: solid 1px black);
 	width: 100%;
 	margin: 5px auto;
 }
 
 table th{
 	color: white;
-	background-color: rgb(60, 100, 160);
+	background-color: black);
 	padding: 10px;
 	font-size: 1.2rem;
 	text-align: left;
