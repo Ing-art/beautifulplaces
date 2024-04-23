@@ -14,6 +14,10 @@
         <!--CSS-->
         <?= (TEMPLATE)::getCss() ?>
 
+        <!--JS-->
+        <?= (TEMPLATE)::getJs() ?>
+
+
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>

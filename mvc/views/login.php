@@ -14,12 +14,13 @@
 		
 		<!-- CSS -->
 		<?= (TEMPLATE)::getCss() ?>
+		<!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
 	</head>
 	<body>
 		<?= (TEMPLATE)::getLogin() ?>
 		<?= (TEMPLATE)::getHeader('LogIn') ?>
 		<?= (TEMPLATE)::getMenu() ?>
-		<?= (TEMPLATE)::getBreadCrumbs(["LogIn" => "/Login"]) ?>
 		<?= (TEMPLATE)::getFlashes() ?>
 		
 		

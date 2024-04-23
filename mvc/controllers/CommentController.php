@@ -44,16 +44,17 @@ class CommentController extends Controller{
     
     // delete a comment
     public function destroy(int $id=0){
+        
+        
+        $comment = Comment::findOrFail(intval($id));
+
+
         // check if the form is received
-
-        $id = intval($id);
-        $comment = Comment::findOrFail($id);
-
         if(!$comment = Comment::findOrFail($id)){
             throw new Exception('Comment not found');
         }
 
-        if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || $comment->iduser == Login::user()->id){
+        if(!(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR'])) && (intval($comment->iduser) != intval(Login::user()->id))){
             Session::error("Unauthorised operation!");
             redirect(isset($comment->idplace) ? "/place/show/{$comment->idplace}" : "/photo/show/{$comment->idphoto}");
         }

@@ -16,6 +16,9 @@
 
         <!--JS SCRIPT FOR PREVIEW-->
         <script src="/js/preview.js"></script>
+
+        <!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>

@@ -14,14 +14,12 @@
 		
 		<!-- CSS -->
 		<?= (TEMPLATE)::getCss() ?>
-		<link href="/css/bootstrap.min.css" rel="stylesheet"> <!--TODO consolidar BS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet"> <!--TODO -->
 
-		<?php
+		<!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
 
-		$places = Place::all(); //TODO via controller??
-
-		?>
-
+		
 	<body>
 		<?= (TEMPLATE)::getLogin() ?>
 		<?= (TEMPLATE)::getHeader('Welcome') ?>
@@ -34,13 +32,13 @@
 				<?php foreach($places as $place){ ?> 
 						<div class="col">
 							<div class="card h-100">
-    							<a href="/place/show/<?=$place->id?>"><img src="<?=PLACE_IMAGE_FOLDER.'/'.$place->cover?>" class="card-img-top"
+    							<a href="/place/show/<?=$place->id?>"><img src="<?=PLACE_IMAGE_FOLDER.'/'.$place->cover?>" class="card-img-top cover"
       							alt="<?=$place->name?>"></a>
     							<div class="card-body">
       								<h5 class="card-title"><?=$place->name?></h5>
       									<p class="card-text"><?=$place->description?></p>
       									<p class="card-text">
-        									<small class="text-muted">Published <?=$place->created_at?></small>
+        									<small class="text-muted">Published <?=date("d-m-Y", strtotime($place->created_at))?></small>
 										</p>
     							</div>
 							</div>

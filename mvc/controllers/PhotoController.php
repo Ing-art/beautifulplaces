@@ -3,20 +3,22 @@
 class PhotoController extends Controller{
 
         // Method to show the photo details
-        public function show(int $id = 0){  //FIXME error en voler veure una foto sense creador (usuari eliminat)
+        public function show(int $id = 0){  
             // Check if the id is received as a parameter
             if(!$id){
                 throw new Exception("No photo id received");         
             }
     
             $photo = Photo::find($id); // get the photo by the id
-            $userid = $photo->belongsTo('User')->id; // belongsTo method (See MODEL)
+            
             
     
             if(is_null($photo->iduser)){ //if user is null (deleted)
+                $userid = 'na';
                 $creator = "Unknown";    
             }else{
                 $creator = $photo->belongsTo('User')-> displayname;
+                $userid = $photo->belongsTo('User')->id; // belongsTo method (See MODEL)
             }       
             if(!Login::guest()){
                 $loggeduserid = Login::user()->id;
@@ -75,9 +77,12 @@ class PhotoController extends Controller{
             throw new Exception("No form received");
         }
 
+        $id = intval($this->request->post('idplace')); // get the id via POST
+
+
         if(!Upload::arrive('picture')){
             Session::error("Please provide an image!");
-            redirect('/photo/create'); //FIXME no redirecciona
+            redirect("/photo/create/$id"); //FIXME no redirecciona
         }
 
         $photo = new Photo(); // create a new photo
@@ -86,7 +91,7 @@ class PhotoController extends Controller{
         $photo->date                     =$this->request->post('date');
         $photo->time                     =$this->request->post('time');
         $photo->iduser                   =$this->request->post('iduser');
-        $photo->idplace                  =$this->request->post('idplace');
+        $photo->idplace                  =$id;
 
        
         // with the try-catch the redirection to the error page is avoided
@@ -108,7 +113,7 @@ class PhotoController extends Controller{
             }
 
             Session::success("The photo: $photo->name has been saved");
-            redirect("/place/show/$photo->idplace");// TODO redirect as per use case
+            redirect("/place/show/$id");// TODO redirect as per use case
 
         }catch(SQLException $e){
             Session::error("The photo: $photo->name could not be saved");
@@ -119,7 +124,7 @@ class PhotoController extends Controller{
                 //Else redirect to the form page
                 // The old values are restored with the helpers old()
             else
-                redirect("/photo/create"); // redirect to the detail page
+                redirect("/photo/create/$id"); // redirect to the detail page
 
         }catch(UploadException $e){
 
@@ -128,7 +133,7 @@ class PhotoController extends Controller{
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/photo/create");  // TODO redirect as per user case
+                    redirect("/photo/create/$id");  // TODO redirect as per user case
 
         }
     }
@@ -255,13 +260,16 @@ class PhotoController extends Controller{
                 
                 Session::success("Photo '$photo->name' has been deleted");
                 redirect("/place/show/$place->id"); 
+
             }catch(SQLException $e){
                 Session::error("Photo '$photo->name' could not be deleted");
+
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
                     redirect("/photo/show/$photo->id"); //TODO redirect as per use case
             }
     }
+
     
 }

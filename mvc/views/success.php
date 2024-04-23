@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Éxito - <?= APP_NAME ?></title>
+		<title>Success | <?= APP_NAME ?></title>
 		
 		<!-- META -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Éxito en <?= APP_NAME ?>">
-		<meta name="author" content="Robert Sallent">
+		<meta name="description" content="Sucess <?= APP_NAME ?>">
+		<meta name="author" content="Ingrid A.">
 		
 		<!-- FAVICON -->
 		<link rel="shortcut icon" href="/favicon.ico" type="image/png">	
@@ -17,13 +17,12 @@
 	</head>
 	<body>
 		<?= (TEMPLATE)::getLogin() ?>
-		<?= (TEMPLATE)::getHeader('Éxito') ?>
+		<?= (TEMPLATE)::getHeader('Success') ?>
 		<?= (TEMPLATE)::getMenu() ?>
-		<?= (TEMPLATE)::getBreadCrumbs(["Éxito" => NULL]) ?>
 		<?= (TEMPLATE)::getFlashes() ?>
 		
 		<main>
-    		<h2>Éxito en la operación solicitada</h2>
+    		<h2>Successful operation</h2>
     
     		<div class='success'>
     			<?= $mensaje ?>

@@ -18,6 +18,9 @@
 
         <script src="/js/Preview.js"></script>
 
+        <!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
+
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>
@@ -47,11 +50,11 @@
                 <div class="centrado">
                     <a class="button" onclick="history.back()">Back</a>
                     <?php 
-                    if($userid == $loggeduserid){ ?>
+                    if($userid === $loggeduserid){ ?>
                         <a class='button' href='/Place/edit/<?=$place->id ?>'>Edit</a>
                         <?php } ?>      
                        <?php 
-                    if(Login::isAdmin() || $userid == $loggeduserid) { ?>
+                    if(Login::isAdmin() || $userid === $loggeduserid) { ?>
                         <a class='button' href='/Place/delete/<?=$place->id ?>'>Delete</a>
                         <?php }
 
@@ -69,7 +72,12 @@
                 <h2>Photos</h2>
                 <hr>
                 <br>
-                <p>Click for comments and details</p>
+                <?php 
+                
+                if(sizeof($photos) >=1){?> 
+                    <p>Click for comments and details</p>
+                <?php } ?>
+
                 <div class="flex-container">
                 <?php
                     if(sizeof($photos) == 1)
@@ -97,7 +105,7 @@
                                     <p style="display:block;"><?=$comment->text?></p>
                                     <?php 
                                     if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Login::user()->id == $comment->iduser){ ?>
-                                    <p  style="display:block;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'">Delete</a></p>                               
+                                    <p  style="display:block;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'" style="text-decoration: underline; cursor:pointer;">Delete</a></p>                               
                        
                             <?php   } ?>
                                 

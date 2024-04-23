@@ -14,6 +14,9 @@
         <!--CSS-->
         <?= (TEMPLATE)::getCss() ?>
 
+    	<!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
+
         <!--JS SCRIPT FOR PREVIEW-->
         <script src="/js/Preview.js"></script>
 

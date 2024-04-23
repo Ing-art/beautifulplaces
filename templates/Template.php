@@ -12,7 +12,7 @@
 class Template implements TemplateInterface{
     
     // ficheros CSS para usar con este template
-    protected static array $css = ['/css/base.css','/css/bootstrap.css'];
+    protected static array $css = ['/css/base.css','/css/bootstrap.css','/css/bootstrap.min.css']; //TODO check
     
     /*****************************************************************************
      * CSS
@@ -31,18 +31,15 @@ class Template implements TemplateInterface{
     /*****************************************************************************
      * JAVASCRIPT
      *****************************************************************************/
-    protected static array $js = ['/js/bootstrap.bundle.js']; //FIXME 
+    protected static array $js = ['/js/bootstrap.bundle.js', '/js/bootstrap.js']; 
 
     public static function getJs(){
-        $html = "";
-        
-        foreach(get_called_class()::$js as $file)
+        ?>
+        <!--BOOTSTRAP SCRIPT FILE-->
+        <script src="/js/bootstrap.bundle.js"></script>
 
-            $html .= "<script href='$file'></script>\n";
-            
-            
-        return $html;
-    }
+       
+    <?php } 
 
     
     /*****************************************************************************

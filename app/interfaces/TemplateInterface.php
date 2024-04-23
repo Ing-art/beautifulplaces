@@ -12,6 +12,8 @@
     interface TemplateInterface{
         
        public static function getCSS();
+
+       public static function getJs();
        public static function getLogin();
        public static function getHeader();
        public static function getMenu();

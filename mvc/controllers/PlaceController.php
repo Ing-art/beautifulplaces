@@ -8,7 +8,7 @@ class PlaceController extends Controller{
     }
 
     // List Place method 
-    public function list(int $page = 1, string $lang = 'en'){
+    public function list(int $page = 1, string $lang = 'en'){ //FIXME 
         // Get the place list and loads the view
         // Within the view there will be a variable named $places
 
@@ -26,11 +26,20 @@ class PlaceController extends Controller{
                 Place::filter($filtro, $limit, $paginator->getOffset()) : // filtered
                 Place::orderBy('created_at', 'DESC', $limit, $paginator->getOffset());
 
+        if(!Login::guest()){
+            $loggeduserid = Login::user()->id;
+                    
+        }else{
+            $loggeduserid = NULL;
+        }
+                
+
     
         $this->loadView('/place/list', [
             'places' => $places,
             'paginator' => $paginator, // pass the Paginator object to the view
-            'filtro' => $filtro
+            'filtro' => $filtro,
+            'loggeduserid'=> $loggeduserid
         ]);
 
     }
@@ -43,13 +52,15 @@ class PlaceController extends Controller{
         }
 
         $place = Place::find($id); // get the place by the id
-        $userid = $place->belongsTo('User')->id; // belongsTo method (See MODEL)
+        
         
         if(is_null($place->iduser)){ // if user is null (deleted)
             $creator = "Unknown"; 
+            $userid = 0;
                
         }else{
             $creator = $place->belongsTo('User')-> displayname;
+            $userid = $place->belongsTo('User')->id; // belongsTo method (See MODEL)
         }
 
       
@@ -95,7 +106,7 @@ class PlaceController extends Controller{
 
         if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR'])){
             Session::error("Unauthorised operation!");
-            redirect('/Login'); //TODO redirect to login when logged in??
+            redirect('/Login'); 
         }
 
         if(!Login::guest()){
@@ -152,7 +163,7 @@ class PlaceController extends Controller{
             }
 
             Session::success("A new place: $place->name has been saved");
-            redirect("/place/show/$place->id");// TODO redirect to the show page
+            redirect("/place/show/$place->id");// redirect to the show page
 
         }catch(SQLException $e){
             Session::error("The place: $place->name could not be saved");
@@ -195,7 +206,6 @@ class PlaceController extends Controller{
 
         if(!Login::guest()){
             $userid = $place->belongsTo('User')->id; // get the place creator id
-            $loggeduser = Login::user();
             $loggeduserid = Login::user()->id;
             if($userid != $loggeduserid){ // if the user is not the creator 
                 Session::error("Unauthorised operation!");
@@ -226,7 +236,7 @@ class PlaceController extends Controller{
 
         if(Login::user()->id != $place->iduser || Login::guest()){
             Session::error("Unauthorised operation!");
-            redirect("/place/show/$place->id"); // TODO redirect to login??
+            redirect("/place/show/$place->id"); // redirect to show
         }
 
        
@@ -258,7 +268,7 @@ class PlaceController extends Controller{
             if(DEBUG) // if debug mode is enabled
                 throw new Exception($e->getMessage());
             else
-                redirect("/place/edit/$place->id"); // redirect as per use case
+                redirect("/place/edit/$place->id"); // redirect to show
         }
     }
 
@@ -308,7 +318,9 @@ class PlaceController extends Controller{
                 
                 Session::success("Place '$place->name' has been deleted");
                 redirect("/"); //TODO redirect as per use case
+
             }catch(SQLException $e){
+                
                 Session::error("Place '$place->name' could not be deleted");
                 if(DEBUG)
                     throw new Exception($e->getMessage());

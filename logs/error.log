@@ -162,3 +162,32 @@ NotFoundException: 22/04/2024 23:17:22 - La URL indicada no existe.
 NotFoundException: 22/04/2024 23:17:23 - La URL indicada no existe.
 NotFoundException: 22/04/2024 23:17:23 - La URL indicada no existe.
 NotFoundException: 22/04/2024 23:17:31 - La URL indicada no existe.
+Exception: 23/04/2024 09:50:01 - <p>ERROR EN LA CONSULTA:</p><p><b>INSERT INTO photos (name, description, date, time, iduser, idplace) VALUES (NULL, NULL, NULL, NULL, '3', '1')</b></p><p>Column 'name' cannot be null</p>
+NothingToFindException: 23/04/2024 09:53:03 - No se recibió el identificador.
+NothingToFindException: 23/04/2024 09:54:37 - No se recibió el identificador.
+NothingToFindException: 23/04/2024 09:54:41 - No se recibió el identificador.
+NothingToFindException: 23/04/2024 09:55:33 - No se recibió el identificador.
+TypeError: 23/04/2024 09:57:18 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 09:57:42 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 09:59:04 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 10:00:34 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 10:04:17 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+ViewException: 23/04/2024 10:20:32 - Error al cargar la página.
+ParseError: 23/04/2024 11:37:33 - syntax error, unexpected token "=>", expecting ")"
+TypeError: 23/04/2024 12:11:08 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 12:14:20 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 12:15:56 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 23/04/2024 12:16:50 - PhotoController::create(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+ViewException: 23/04/2024 12:23:26 - Error al cargar la página.
+ViewException: 23/04/2024 12:24:27 - Error al cargar la página.
+ViewException: 23/04/2024 12:25:00 - Error al cargar la página.
+ViewException: 23/04/2024 12:25:03 - Error al cargar la página.
+SQLException: 23/04/2024 12:36:01 - ERROR al realizar la operación.
+SQLException: 23/04/2024 12:38:48 - ERROR al realizar la operación.
+ViewException: 23/04/2024 12:46:42 - Error al cargar la página.
+ViewException: 23/04/2024 12:47:16 - Error al cargar la página.
+ViewException: 23/04/2024 12:48:45 - Error al cargar la página.
+ViewException: 23/04/2024 12:51:25 - Error al cargar la página.
+ViewException: 23/04/2024 12:52:53 - Error al cargar la página.
+ViewException: 23/04/2024 12:54:48 - Error al cargar la página.
+ViewException: 23/04/2024 12:54:49 - Error al cargar la página.

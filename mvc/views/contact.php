@@ -14,7 +14,11 @@
         <!--CSS-->
         <?= (TEMPLATE)::getCss() ?>
 
+        <!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
+
         <!--CAPTCHA-->
+        //TODO
         
     </head>
     <body>

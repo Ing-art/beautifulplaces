@@ -13,6 +13,9 @@
 
         <!--CSS-->
         <?= (TEMPLATE)::getCss() ?>
+
+        <!--JS-->
+		<?= (TEMPLATE)::getJs() ?>
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>
@@ -73,7 +76,7 @@
                         }     
                         ?></td>
                         <td><?=$user->created_at?></td>
-                        <td><?=$user->updated_at?></td> <!-- FIXME updated at no funciona -->
+                        <td><?=$user->updated_at?></td> 
                         <td><?=$user->blocked_at?></td>            
                         <td>
                             <a class='button' href='/User/show/<?=$user->id ?>'>Show</a>
