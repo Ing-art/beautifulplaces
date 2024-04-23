@@ -74,7 +74,7 @@ define('TEST_TEMPLATE', 'Test');   // Ubicación del template para los tests.
  * HERRAMIENTAS DE DEPURACIÓN (PARA APP_TYPE WEB)
  * -------------------------------------------------------------*/
     
-define('DEBUG', false); // Activa el modo debug.   
+define('DEBUG', true); // Activa el modo debug.   
 
 // Detalles que queremos mostrar en modo debug en la página de error
 // OPCIONES: user, trace, post, get, session, cookie, client

@@ -42,6 +42,7 @@
                         <label>E-mail</label>
                         <input type="email" name="email" value="<?= $user->email?>">
                         <br>
+                        
                         <label>Profile picture</label>
                         <input type="file" name="picture" accept="image/*" id="file-with-preview">
                         <br>  
@@ -54,6 +55,8 @@
                     <figcaption>Profile picture - <?="$user->displayname"?></figcaption>
                  </figure>
         </div>
+        <?php
+        if(Login::isAdmin()){ ?> 
         <h2>User's role</h2>
             <?php if($roles){ ?>
                 <ul class="listado">
@@ -65,7 +68,8 @@
                 </ul>           
             <?php }else{
                 echo "<p class='error'>No role granted</p>";
-            } ?> 
+            } 
+        }?> 
         <div class="centrado">
             <a class="button" onclick="history.back()">Back</a>
             <a class="button"href='/User/show/<?=$user->id ?>'>Show</a>

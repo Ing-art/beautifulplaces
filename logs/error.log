@@ -191,3 +191,94 @@ ViewException: 23/04/2024 12:51:25 - Error al cargar la página.
 ViewException: 23/04/2024 12:52:53 - Error al cargar la página.
 ViewException: 23/04/2024 12:54:48 - Error al cargar la página.
 ViewException: 23/04/2024 12:54:49 - Error al cargar la página.
+NotFoundException: 23/04/2024 13:38:35 - La URL indicada no existe.
+NotFoundException: 23/04/2024 13:40:43 - La URL indicada no existe.
+ViewException: 23/04/2024 13:40:50 - Error al cargar la página.
+ViewException: 23/04/2024 13:40:58 - Error al cargar la página.
+ViewException: 23/04/2024 13:41:02 - Error al cargar la página.
+ViewException: 23/04/2024 13:41:05 - Error al cargar la página.
+ViewException: 23/04/2024 13:41:08 - Error al cargar la página.
+ViewException: 23/04/2024 13:41:11 - Error al cargar la página.
+ViewException: 23/04/2024 13:41:13 - Error al cargar la página.
+ViewException: 23/04/2024 13:41:48 - Error al cargar la página.
+ViewException: 23/04/2024 13:43:11 - Error al cargar la página.
+ViewException: 23/04/2024 13:44:18 - Error al cargar la página.
+ViewException: 23/04/2024 13:44:22 - Error al cargar la página.
+SQLException: 23/04/2024 13:46:35 - ERROR al realizar la operación.
+Error: 23/04/2024 13:52:07 - Call to a member function belongsTo() on null
+Error: 23/04/2024 13:52:27 - Call to a member function belongsTo() on null
+Error: 23/04/2024 13:52:34 - Call to a member function belongsTo() on null
+Error: 23/04/2024 13:54:47 - Call to a member function belongsTo() on null
+SQLException: 23/04/2024 13:55:28 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 23/04/2024 13:56:18 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+ViewException: 23/04/2024 14:07:37 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:15:44 - <p>ERROR en la vista <b>../mvc/views//place/list.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p></p>
+ViewException: 23/04/2024 14:18:05 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:19:01 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:19:47 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:21:04 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:22:07 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:22:22 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:22:24 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:25:21 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:26:50 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+NotFoundException: 23/04/2024 14:28:14 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:29:09 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:29:28 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:29:47 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:30:25 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:30:51 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:32:06 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:32:14 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:33:12 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:33:53 - No se encontró la entidad buscada.
+SQLException: 23/04/2024 14:40:28 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 23/04/2024 14:40:40 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+SQLException: 23/04/2024 14:40:43 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p>
+Error: 23/04/2024 14:41:15 - Call to undefined function is_empty()
+ViewException: 23/04/2024 14:43:48 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+NotFoundException: 23/04/2024 14:45:07 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:48:25 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:49:05 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:50:02 - No se encontró la entidad buscada.
+ViewException: 23/04/2024 14:53:11 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+ViewException: 23/04/2024 14:58:54 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Model::findOrFail(): Argument #1 ($id) must be of type int, null given, called in C:\xampp\htdocs\projectes\beautifulplaces\mvc\views\place\show.php on line 104</p>
+NotFoundException: 23/04/2024 14:59:44 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 14:59:47 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 15:00:08 - No se encontró la entidad buscada.
+NotFoundException: 23/04/2024 15:00:31 - No se encontró la entidad buscada.
+Error: 23/04/2024 15:03:39 - Call to a member function belongsTo() on null
+SQLException: 23/04/2024 15:11:08 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                       FROM users 
+                       WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3</p>
+SQLException: 23/04/2024 15:12:37 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                     FROM users 
+                     WHERE idcomment = 5</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
+SQLException: 23/04/2024 15:14:33 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                     FROM users 
+                     WHERE idcomment = 5</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
+SQLException: 23/04/2024 15:14:40 - <p>ERROR EN LA CONSULTA:</p><p><b>SELECT COUNT(*) AS total
+                     FROM users 
+                     WHERE idcomment = 5</b></p><p>Unknown column 'idcomment' in 'where clause'</p>
+ParseError: 23/04/2024 15:15:47 - syntax error, unexpected end of file
+ViewException: 23/04/2024 15:21:30 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: <p>ERROR EN LA CONSULTA:</p><p><b>SELECT * FROM users WHERE id = </b></p><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1</p></p>
+ViewException: 23/04/2024 15:22:13 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Call to a member function belongsTo() on null</p>
+NotFoundException: 23/04/2024 15:25:10 - La URL indicada no existe.
+NotFoundException: 23/04/2024 15:27:08 - La URL indicada no existe.
+NotFoundException: 23/04/2024 15:27:24 - La URL indicada no existe.

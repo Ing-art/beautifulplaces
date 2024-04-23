@@ -58,19 +58,26 @@
             </div>
             <section>
                 <h2>Comments</h2>
+                <?php
+                if(!($comments)){ ?>
+                    <p>No comments yet</p>
+                <?php } ?>
+
                     <div>
                         <?php                           
                             foreach($comments as $comment){?>
-                                <p style="font-weight:bold;"><?=User::findOrFail($comment->iduser)->displayname?> on <?=$comment->created_at?></p>
+                                <p style="font-weight:bold; display:block"><?=Comment::findOrFail($comment->id)->iduser ? $comment->iduser->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
                                 <p style="list-style-type:none;"><?=$comment->text?></p>
                                 <?php 
-                                if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Login::user()->id == $comment->iduser){ ?>
+                                if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Comment::findOrFail($comment->id)->iduser ?? Login::user()->id == $comment->iduser){ ?>
                                 <p  style="list-style-type:none;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'" style="text-decoration: underline; cursor:pointer;">Delete</a></p>                           
                         <?php } ?>
                                 <p>------------------------</p>
                             <?php } ?>                           
                     </div>
             </section>
+            <?php
+            if(Login::oneRole(['ROLE_MODERATOR','ROLE_USER']) && !Login::isAdmin()){ ?>
             <section class="flex1">
                 <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
                     <input type="hidden" name="idphoto" value="<?=$photo->id?>">
@@ -78,7 +85,8 @@
                     <br>
                     <input type="submit" class="button" name="save" value="Submit">
                 </form>
-            </section>              
+            </section>
+            <?php } ?>              
         </main>
         <?= (TEMPLATE)::getFooter() ?>
     </body>

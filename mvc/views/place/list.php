@@ -81,11 +81,12 @@
                         <td class="centrado"><?=$place->description?></td>
                         <td class="centrado">
                             <a class="button" href='/Place/show/<?=$place->id ?>'>Show</a> <!--FIXME -->
-                        <?php if(!is_null($place->belongsTo('User')->id) && $loggeduserid === $place->belongsTo('User')->id){ ?>
+
+                        <?php if(!is_null($place->iduser) && $loggeduserid === $place->belongsTo('User')->id){ ?>
                             <a class='button' href='/Place/edit/<?=$place->id ?>'>Edit</a>
                         <?php } ?>      
                         <?php 
-                         if(!is_null($place->belongsTo('User')->id) && ($loggeduserid === $place->belongsTo('User')->id || Login::oneRole(['ROLE_ADMIN', 'ROLE_MODERATOR']))) { ?>
+                         if((Login::oneRole(['ROLE_MODERATOR', 'ROLE_ADMIN'])) || !is_null($place->iduser) && $loggeduserid === $place->belongsTo('User')->id) { ?>
                             <a class='button' href='/Place/delete/<?=$place->id ?>'>Delete</a>
                         <?php } ?>
                         </td>

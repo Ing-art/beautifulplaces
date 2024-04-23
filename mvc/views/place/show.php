@@ -98,13 +98,17 @@
                 </section>
                 <section>
                     <h2>Comments</h2>
+                    <?php
+                        if(!($comments)){ ?>
+                            <p>No comments yet</p>
+                        <?php } ?>
                     <div>
                         <?php       
                             foreach($comments as $comment){?>
-                                    <p style="font-weight:bold; display:block"><?=User::findOrFail($comment->iduser)->displayname?> on <?=$comment->created_at?></p>
+                                    <p style="font-weight:bold; display:block"><?=Comment::findOrFail($comment->id)->iduser ? $comment->iduser->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
                                     <p style="display:block;"><?=$comment->text?></p>
                                     <?php 
-                                    if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Login::user()->id == $comment->iduser){ ?>
+                                    if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Comment::findOrFail($comment->id)->iduser ?? Login::user()->id == $comment->iduser){ ?>
                                     <p  style="display:block;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'" style="text-decoration: underline; cursor:pointer;">Delete</a></p>                               
                        
                             <?php   } ?>
@@ -115,15 +119,18 @@
                             ?>
                     </div>
                     </section>
-                    <section class="flex1">
-                    <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
-                         <!--hidden input with the place id to edit-->
-                        <input type="hidden" name="idplace" value="<?=$place->id?>">
-                        <textarea type="text" name="text" value="<?= old('text') ?>">Add a comment..</textarea>
-                        <br>
-                        <input type="submit" class="button" name="save" value="Submit">
-                    </form>
-                    </section>                    
+                    <?php 
+                    if(Login::oneRole(['ROLE_MODERATOR','ROLE_USER']) && !Login::isAdmin()){ ?> 
+                        <section class="flex1">
+                        <form method="POST" action="/Comment/store" enctype = "multipart/form-data">
+                            <!--hidden input with the place id to edit-->
+                            <input type="hidden" name="idplace" value="<?=$place->id?>">
+                            <textarea type="text" name="text" value="<?= old('text') ?>">Add a comment..</textarea>
+                            <br>
+                            <input type="submit" class="button" name="save" value="Submit">
+                        </form>
+                        </section>
+                    <?php } ?>                    
         </main>
         <?= (TEMPLATE)::getFooter() ?>
     </body>
