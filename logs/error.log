@@ -283,3 +283,20 @@ NotFoundException: 23/04/2024 15:25:10 - La URL indicada no existe.
 NotFoundException: 23/04/2024 15:27:08 - La URL indicada no existe.
 NotFoundException: 23/04/2024 15:27:24 - La URL indicada no existe.
 NotFoundException: 24/04/2024 08:21:01 - No se encontró la entidad buscada.
+ViewException: 24/04/2024 08:30:45 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Call to a member function belongsTo() on string</p>
+ViewException: 24/04/2024 08:35:02 - <p>ERROR en la vista <b>../mvc/views/place/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Call to a member function belongsTo() on string</p>
+ViewException: 24/04/2024 08:35:49 - <p>ERROR en la vista <b>../mvc/views/photo/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Call to a member function belongsTo() on string</p>
+ViewException: 24/04/2024 08:36:04 - <p>ERROR en la vista <b>../mvc/views/photo/show.php</b>.</p>
+         <p>INFORMACIÓN ADICIONAL: Call to a member function belongsTo() on string</p>
+SQLException: 24/04/2024 11:42:59 - ERROR al realizar la operación.
+SQLException: 24/04/2024 11:43:24 - ERROR al realizar la operación.
+Error: 24/04/2024 12:05:29 - Call to a member function oneRole() on null
+TypeError: 24/04/2024 12:06:58 - PhotoController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+TypeError: 24/04/2024 12:07:12 - PhotoController::show(): Argument #1 ($id) must be of type int, string given, called in C:\xampp\htdocs\cifoplaces\app\core\App.php on line 68
+Error: 24/04/2024 12:11:06 - Call to a member function oneRole() on null
+Error: 24/04/2024 12:12:44 - Call to a member function hasRole() on null
+Error: 24/04/2024 12:17:12 - Call to a member function hasRole() on null
+Error: 24/04/2024 12:20:35 - Undefined constant "id"

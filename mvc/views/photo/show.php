@@ -66,7 +66,7 @@
                     <div>
                         <?php                           
                             foreach($comments as $comment){?>
-                                <p style="font-weight:bold; display:block"><?=Comment::findOrFail($comment->id)->iduser ? $comment->iduser->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
+                                <p style="font-weight:bold; display:block"><?=$comment->iduser ? $comment->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
                                 <p style="list-style-type:none;"><?=$comment->text?></p>
                                 <?php 
                                 if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Comment::findOrFail($comment->id)->iduser ?? Login::user()->id == $comment->iduser){ ?>

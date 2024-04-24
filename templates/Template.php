@@ -140,7 +140,7 @@ class Template implements TemplateInterface{
                         <a class="nav-link" href="/Place/list">Places</a>
                     </li>
                     <?php
-                        if(Login::oneRole(['ROLE_USER'])){ ?>
+                        if(Login::oneRole(['ROLE_USER']) && !Login::isAdmin()){ ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Place/create">New Place</a>
                             </li>

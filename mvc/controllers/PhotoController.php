@@ -113,7 +113,7 @@ class PhotoController extends Controller{
             }
 
             Session::success("The photo: $photo->name has been saved");
-            redirect("/place/show/$id");// TODO redirect as per use case
+            redirect("/place/show/$id");
 
         }catch(SQLException $e){
             Session::error("The photo: $photo->name could not be saved");
@@ -133,7 +133,7 @@ class PhotoController extends Controller{
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/photo/create/$id");  // TODO redirect as per user case
+                    redirect("/photo/create/$id");  
 
         }
     }
@@ -176,6 +176,12 @@ class PhotoController extends Controller{
     // Update the photo details from the edit form
     public function update(){
         Auth::check();
+
+        if($userid != $loggeduserid){ // if the user is not the creator 
+            Session::error("Unauthorised operation!");
+            redirect("/photo/show/$place->id");
+        }
+
 
         if(!$this->request->has('edit')) // if the form is not received 
         throw new Exception("Data not received");
@@ -232,7 +238,7 @@ class PhotoController extends Controller{
         // check if the user is authorised
         if(!Login::isAdmin() && Login::user()->id != $photo->iduser && !$loggeduser->oneRole(['ROLE_MODERATOR'])){
             Session::error("Unauthorised operation!");
-            redirect('/photo/show/$id'); // TODO redirect as per use case
+            redirect('/photo/show/$id'); 
         }
 
         $this->loadView('photo/delete', ['photo' => $photo]);
@@ -244,9 +250,17 @@ class PhotoController extends Controller{
         if(!$this->request->has('delete'))
             throw new Exception("No confirmation received");
 
+
+
         $id = intval($this->request->post('id')); // get the id
         $photo = Photo::findOrFail($id); // get the photo
         $place = $photo->belongsTo('Place');
+
+        // check if the user is authorised
+        if(!Login::isAdmin() && Login::user()->id != $photo->iduser && !Login::user()->oneRole(['ROLE_MODERATOR'])){
+                Session::error("Unauthorised operation!");
+                redirect('/photo/show/$id'); 
+            }
 
         // check if the photo exists
         if(!$photo)
@@ -267,7 +281,7 @@ class PhotoController extends Controller{
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/photo/show/$photo->id"); //TODO redirect as per use case
+                    redirect("/photo/show/$photo->id"); 
             }
     }
 

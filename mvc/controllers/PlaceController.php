@@ -8,7 +8,7 @@ class PlaceController extends Controller{
     }
 
     // List Place method 
-    public function list(int $page = 1, string $lang = 'en'){ //FIXME 
+    public function list(int $page = 1, string $lang = 'en'){  
         // Get the place list and loads the view
         // Within the view there will be a variable named $places
 
@@ -109,7 +109,7 @@ class PlaceController extends Controller{
             redirect('/Login'); 
         }
 
-        if(!Login::guest()){
+        if(!Login::guest() && !Login::isAdmin()){
             $user = Login::user();
             $userid = $user->id;
         
@@ -125,6 +125,11 @@ class PlaceController extends Controller{
 
     // Method to save the place
     public function store(){
+
+        if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR'])){
+            Session::error("Unauthorised operation!");
+            redirect('/Login'); 
+        }
         // check if the request comes from the form
         if(!$this->request->has('save')){
             throw new Exception("No form received");
@@ -289,7 +294,7 @@ class PlaceController extends Controller{
             throw new NotFoundException("Place with id $id does not exist");
      
         // check if the user is authorised
-        if(!Login::isAdmin() && Login::user()->id != $place->iduser && !$loggeduser->oneRole(['ROLE_MODERATOR'])){
+        if(!Login::isAdmin() && Login::user()->id != $place->iduser && !$loggeduser->oneRole(['ROLE_MODERATOR','ROLE_ADMIN'])){
             Session::error("Unauthorised operation!");
             redirect('/');
         }
@@ -303,8 +308,16 @@ class PlaceController extends Controller{
         if(!$this->request->has('delete'))
             throw new Exception("No confirmation received");
 
+
+
         $id = intval($this->request->post('id')); // get the id
         $place = Place::find($id); // get the place
+
+        // check if the user is authorised
+        if(!Login::isAdmin() && Login::user()->id != $place->iduser && !$Login::user()->oneRole(['ROLE_MODERATOR','ROLE_ADMIN'])){
+            Session::error("Unauthorised operation!");
+            redirect('/');
+        }
 
         // check if the place exist
         if(!$place)
@@ -317,7 +330,7 @@ class PlaceController extends Controller{
                     @unlink('../public/'.PLACE_IMAGE_FOLDER.'/'.$place->cover);
                 
                 Session::success("Place '$place->name' has been deleted");
-                redirect("/"); //TODO redirect as per use case
+                redirect("/place/list"); 
 
             }catch(SQLException $e){
                 
@@ -325,7 +338,7 @@ class PlaceController extends Controller{
                 if(DEBUG)
                     throw new Exception($e->getMessage());
                 else
-                    redirect("/"); //TODO redirect as per use case
+                    redirect("/place/show/$place->id"); 
             }
     }
 

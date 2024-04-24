@@ -15,6 +15,9 @@ class UserController extends Controller{
     }
 
     public function list(int $page = 1, string $lang = 'en'){
+        if(!Login::isAdmin()){
+            throw new Exception('Unauthorised operation!');
+        }
         // Get the user list and loads the view
         // Within the view there will be a variable named $users
         $limit = RESULTS_PER_PAGE; // max number of results per page
@@ -204,6 +207,7 @@ class UserController extends Controller{
         // check if the id is received
         if(!$id)
             throw new Exception("No user account to delete has been received");
+
         // get the book with the id
         $usertodelete = User::find($id);
 
@@ -211,15 +215,27 @@ class UserController extends Controller{
         if(!$usertodelete)
             throw new NotFoundException("User account with id $id does not exist");
 
+        if($usertodelete->hasRole('ROLE_ADMIN')){
+            throw new Exception("You are admin, you cannot delete your account");
+        }
+
         $this->loadView('user/delete', ['usertodelete' => $usertodelete]);
     }
 
     // delete the user
     public function destroy(int $id=0){
 
+        $id                =$this->request->post('id');
+
+        $usertodelete = User::findOrFail($id);
+
         // check if the form is received
         if(!$this->request->has('delete'))
             throw new Exception("No confirmation received");
+
+        if($usertodelete->hasRole('ROLE_ADMIN')){
+                throw new Exception("You are admin, you cannot delete your account");
+            }
 
         $id = intval($this->request->post('id')); // get the id
         $usertodelete = User::findOrFail($id); // get the user
@@ -243,7 +259,7 @@ class UserController extends Controller{
         }
     }
 
-    public function addNewRole(){
+    public function addNewRole(){  //TODO add functionality to user management panel
         if(empty($_POST['add']))
             throw new Exception("form not received");
 

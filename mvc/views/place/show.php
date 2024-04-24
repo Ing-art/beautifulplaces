@@ -76,6 +76,8 @@
                 
                 if(sizeof($photos) >=1){?> 
                     <p>Click for comments and details</p>
+                <?php }else{ ?>
+                    <p>No photos posted yet</p>
                 <?php } ?>
 
                 <div class="flex-container">
@@ -105,11 +107,11 @@
                     <div>
                         <?php       
                             foreach($comments as $comment){?>
-                                    <p style="font-weight:bold; display:block"><?=Comment::findOrFail($comment->id)->iduser ? $comment->iduser->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
+                                    <p style="font-weight:bold; display:block"><?= $comment->iduser ? $comment->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
                                     <p style="display:block;"><?=$comment->text?></p>
                                     <?php 
-                                    if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Comment::findOrFail($comment->id)->iduser ?? Login::user()->id == $comment->iduser){ ?>
-                                    <p  style="display:block;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'" style="text-decoration: underline; cursor:pointer;">Delete</a></p>                               
+                                    if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Login::user()->id == ($comment->iduser ? $comment->iduser : 'Unknown')){ ?>
+                                        <p  style="display:block;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'" style="text-decoration: underline; cursor:pointer;">Delete</a></p>                               
                        
                             <?php   } ?>
                                 

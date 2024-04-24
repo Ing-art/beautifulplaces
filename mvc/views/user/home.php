@@ -44,7 +44,10 @@
             <!-- Edit user's details -->
             <div class="centrado">
                     <a class="button" href="/User/edit/<?=$user->id?>">Edit</a>
-                    <a class="button" href="/User/delete/<?=$user->id?>">Delete account</a>
+                    <?php
+                    if(!Login::isAdmin()){ ?>
+                        <a class="button" href="/User/delete/<?=$user->id?>">Delete account</a>
+                    <?php } ?>
             </div>
 
             <?php

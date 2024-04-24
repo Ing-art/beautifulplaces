@@ -2,12 +2,12 @@
     <html lang="es">
     	<head>
     		<meta charset="UTF-8">
-			<title>Listado de errores en  - <?= APP_NAME ?></title>
+			<title>Error list | <?= APP_NAME ?></title>
 		
     		<!-- META -->
     		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    		<meta name="description" content="Lista de errores en <?= APP_NAME ?>">
-    		<meta name="author" content="Robert Sallent">
+    		<meta name="description" content="Error list <?= APP_NAME ?>">
+    		<meta name="author" content="Ingrid A.">
     		
     		<!-- FAVICON -->
     		<link rel="shortcut icon" href="/favicon.ico" type="image/png">	
@@ -17,10 +17,14 @@
     	</head>
     	<body>
     		<?= (TEMPLATE)::getLogin() ?>
-    		<?= (TEMPLATE)::getHeader('Lista de errores') ?>
+    		<?= (TEMPLATE)::getHeader('Error log') ?>
     		<?= (TEMPLATE)::getMenu() ?>
-    		<?= (TEMPLATE)::getBreadCrumbs(["Lista de errores" => NULL]) ?>
     		<?= (TEMPLATE)::getFlashes() ?>
+
+			        <!--JS-->
+			<?= (TEMPLATE)::getJs() ?>
+
+
     		
     		<main>
         		<h1><?= APP_NAME ?></h1>
@@ -28,10 +32,9 @@
         		<?php if(DB_ERRORS){ ?>
         		<section>
         		
-            		<h2>Lista completa de errores</h2>
+            		<h2>Error log</h2>
         			
-        			<p>Utiliza el formulario de búsqueda para filtrar resultados. Las búsquedas 
-        			   se mantendrán guardadas aunque cambies de página.</p>
+        			<p>Use the filter tool to search errors.</p>
         			   
         			<?php 
         			
@@ -62,7 +65,7 @@
      	
          				<div class="flex-container">
          					<div class="flex1">
-            					<a class="button" href="/Error/clear">Vaciar lista</a>
+            					<a class="button" href="/Error/clear">Empty list</a>
             				</div>
             				<div class="flex1 derecha">
             					<?= $paginator->stats()?>
@@ -72,13 +75,13 @@
             			
             			<table>
                 			<tr>
-                				<th>Fecha</th>
-                				<th>Tipo</th>
+                				<th>Date</th>
+                				<th>Type</th>
                 				<th>URL</th>
-                				<th>Mensaje</th>
-                				<th>Usuario</th>
+                				<th>Message</th>
+                				<th>User</th>
                 				<th>IP</th>
-                				<th>Operaciones</th>
+                				<th>Operations</th>
                 			</tr>
                     		<?php foreach($errores as $error){ ?>
                 				<tr>
@@ -88,7 +91,7 @@
                     				<td><?=$error->message?></td>
                     				<td><?=$error->user ?? " -- "?></td>
                     				<td><?=$error->ip?></td>
-                    				<td><a class="button" href="/Error/destroy/<?= $error->id ?>">Borrar</a></td>
+                    				<td><a class="button" href="/Error/destroy/<?= $error->id ?>">Delete</a></td>
                 			   </tr>
                     		<?php } ?>
                 		</table>
@@ -96,45 +99,45 @@
                 		<?= $paginator->ellipsisLinks() ?>
             		
             		<?php }else{ ?>
-            			<p class="success">No hay errores que mostrar.</p>
+            			<p class="success">No errors to show.</p>
             		<?php } ?>
             	</section>
             	<?php } ?>
         		
         		<?php if(LOG_ERRORS || LOG_LOGIN_ERRORS){ ?>
         		<section>
-            		<h2>Ficheros de LOG</h2>
-            		<p>Los ficheros de log sirven para registrar errores en disco.</p>
+            		<h2>LOG files</h2>
+            		<p>Files to store the error log in disk.</p>
             		
-            		<h3>Descargar</h3>
+            		<h3>Download</h3>
             		
-            		<p>Puedes descargar los ficheros de log mediante los siguientes enlaces 
-            		   (no se muestran si no existen ficheros de LOG).</p>
+            		<p>Download links 
+            		   (only if there are LOG files).</p>
             		   
             		<?php if(LOG_ERRORS && is_readable(ERROR_LOG_FILE)){ ?>
-            		<a class="button" href="/Error/download">Descargar LOG</a>
+            		<a class="button" href="/Error/download">Download LOG</a>
             		<?php } ?>
             		
             		<?php if(LOG_LOGIN_ERRORS && is_readable(LOGIN_ERRORS_FILE)){ ?>
-        			<a class="button" href="/Error/download/login">Descargar errores de LogIn</a>
+        			<a class="button" href="/Error/download/login">Download LogIn errors</a>
         			<?php } ?>
         			     			
-            		<h3>Borrar</h3>
-            		<p>Puedes eliminar los ficheros de log mediante los siguientes enlaces 
-            		   (no se muestran si no existen ficheros de LOG).</p>
+            		<h3>Delete</h3>
+            		<p>Delete links 
+					(only if there are LOG files).</p>
             		   
             		<?php if(LOG_ERRORS && is_readable(ERROR_LOG_FILE)){ ?>
-            		<a class="button" href="/Error/erase">Borrar LOG</a>
+            		<a class="button" href="/Error/erase">Delete LOG</a>
             		<?php } ?>
             		
             		<?php if(LOG_LOGIN_ERRORS && is_readable(LOGIN_ERRORS_FILE)){ ?>
-        			<a class="button" href="/Error/erase/login">Borrar LOG de Login</a>
+        			<a class="button" href="/Error/erase/login">Delete Login LOG</a>
         			<?php } ?>
         		</section>
         		<?php } ?>
         		
         		<nav class="enlaces centrado">
-        			<a class="button" onclick="history.back()">Atrás</a>
+        			<a class="button" onclick="history.back()">Back</a>
         		</nav>
         		
     		</main>
