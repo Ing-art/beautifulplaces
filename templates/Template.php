@@ -315,8 +315,7 @@ class Template implements TemplateInterface{
         return "
         <footer class='primary'>
             
-            <p>FastLight Framework by Robert Sallent
-                <a href='https://github.com/robertsallent/fastlight'>
+            <p>Created by <a href='https://github.com/Ing-art'>Ing-Art</a></p><p>FastLight Framework by Robert Sallent<a href='https://github.com/robertsallent/fastlight'>
                     <img src='/images/template/github.png' alt='GitHub'>
                 </a>
             </p>

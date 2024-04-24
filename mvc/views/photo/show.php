@@ -69,7 +69,7 @@
                                 <p style="font-weight:bold; display:block"><?=$comment->iduser ? $comment->belongsTo('User')->displayname :'Unknown'?> on <?=$comment->created_at?></p>
                                 <p style="list-style-type:none;"><?=$comment->text?></p>
                                 <?php 
-                                if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Comment::findOrFail($comment->id)->iduser ?? Login::user()->id == $comment->iduser){ ?>
+                                if(Login::oneRole(['ROLE_ADMIN','ROLE_MODERATOR']) || Login::user()->id == ($comment->iduser ? $comment->iduser : 'Unknown')){ ?>
                                 <p  style="list-style-type:none;"><a onclick="if(confirm('Are you sure?')) location.href='/Comment/destroy/<?=$comment->id?>'" style="text-decoration: underline; cursor:pointer;">Delete</a></p>                           
                         <?php } ?>
                                 <p>------------------------</p>

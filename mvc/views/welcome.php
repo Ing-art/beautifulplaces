@@ -36,6 +36,7 @@
       							alt="<?=$place->name?>"></a>
     							<div class="card-body">
       								<h5 class="card-title"><?=$place->name?></h5>
+									  <h6 class="card-title"><?=$place->location?></h6>
       									<p class="card-text"><?=$place->description?></p>
       									<p class="card-text">
         									<small class="text-muted">Published <?=date("d-m-Y", strtotime($place->created_at))?></small>
