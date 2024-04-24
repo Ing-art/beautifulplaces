@@ -89,7 +89,6 @@ CREATE TABLE errors(
 );
 
 
-
 INSERT INTO users(displayname, email, phone, password, roles) VALUES 
 	('admin', 'admin@fastlight.com', '666666666', md5('1234'), '["ROLE_USER", "ROLE_ADMIN"]'),
 	('moderator', 'moderator@fastlight.com', '666666665', md5('1234'), '["ROLE_USER", "ROLE_MODERATOR"]'),

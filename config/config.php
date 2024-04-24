@@ -40,7 +40,7 @@ define('DEFAULT_CONTROLLER', 'WelcomeController');
 define('DEFAULT_METHOD', 'index');
    
 // Email del administrador, para la operación de "contacto"
-define('ADMIN_EMAIL', 'di.nuovo@hotmail.com');
+define('ADMIN_EMAIL', 'mymail@hotmail.com');
 
 // ¿Deben las cadenas vacías ser convertidas a NULL? 
 // se aplica all recuperar los datos de la petición mediante el objeto Request,
