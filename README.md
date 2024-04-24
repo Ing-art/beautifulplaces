@@ -11,6 +11,7 @@ Comming next:
 
 - Users can rate places and photos
 - Admins can change a user's role to moderator and viceversa
+- Responsive css on all pages
 
 
 
