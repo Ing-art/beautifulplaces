@@ -9,7 +9,6 @@ class ContactController extends Controller{
     }
 
     // method to send the email to the admin
-
     public function send(){
         if(empty($_POST['send']))
             throw new Exception("Contact form not received");

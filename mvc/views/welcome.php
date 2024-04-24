@@ -14,11 +14,10 @@
 		
 		<!-- CSS -->
 		<?= (TEMPLATE)::getCss() ?>
-		<link href="/css/bootstrap.min.css" rel="stylesheet"> <!--TODO -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet"> 
 
 		<!--JS-->
 		<?= (TEMPLATE)::getJs() ?>
-
 		
 	<body>
 		<?= (TEMPLATE)::getLogin() ?>

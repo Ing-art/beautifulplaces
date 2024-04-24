@@ -22,8 +22,7 @@
 		<?= (TEMPLATE)::getLogin() ?>
 		<?= (TEMPLATE)::getHeader('Error') ?>
 		<?= (TEMPLATE)::getMenu() ?>
-		<?= (TEMPLATE)::getFlashes() ?>
-		
+		<?= (TEMPLATE)::getFlashes() ?>	
 		<main>
     		<h2>Operation failed</h2>
     

@@ -24,9 +24,7 @@
 		<?= (TEMPLATE)::getMenu() ?>
 		<?= (TEMPLATE)::getFlashes() ?>
 		
-		<main>
-			
-    			
+		<main>  			
         		<form class="w50 bloque-centrado" method="POST" autocomplete="off" id="login" action="/Forgotpassword/send">
         			
         			<h2>Get a new password</h2>

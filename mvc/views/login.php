@@ -21,9 +21,7 @@
 		<?= (TEMPLATE)::getLogin() ?>
 		<?= (TEMPLATE)::getHeader('LogIn') ?>
 		<?= (TEMPLATE)::getMenu() ?>
-		<?= (TEMPLATE)::getFlashes() ?>
-		
-		
+		<?= (TEMPLATE)::getFlashes() ?>		
 		<main>
 	
     		<form class="w50 bloque-centrado" method="POST" autocomplete="off" id="login" action="/Login/enter">

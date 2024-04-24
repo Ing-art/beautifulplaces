@@ -8,7 +8,6 @@
  * 
  * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */   
-
 class ForgotpasswordController extends Controller{
     
     /** Muestra el formulario que solicita una nueva clave. */

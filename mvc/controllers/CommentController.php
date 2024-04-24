@@ -2,7 +2,6 @@
 
 class CommentController extends Controller{
 
-
     public function store(){
 
         if(!Login::oneRole(['ROLE_USER','ROLE_MODERATOR']) && Login::isAdmin()){

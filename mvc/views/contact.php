@@ -18,8 +18,7 @@
 		<?= (TEMPLATE)::getJs() ?>
 
         <!--CAPTCHA-->
-        //TODO
-        
+        //TODO     
     </head>
     <body>
         <?= (TEMPLATE)::getLogin() ?>

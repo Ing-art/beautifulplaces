@@ -8,7 +8,6 @@
  * 
  * FastLight Framework by @author Robert Sallent <robertsallent@gmail.com>
  */
-
 class WelcomeController extends Controller{
     
     /** Carga la vista de portada. */

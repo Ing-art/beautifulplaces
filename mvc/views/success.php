@@ -19,8 +19,7 @@
 		<?= (TEMPLATE)::getLogin() ?>
 		<?= (TEMPLATE)::getHeader('Success') ?>
 		<?= (TEMPLATE)::getMenu() ?>
-		<?= (TEMPLATE)::getFlashes() ?>
-		
+		<?= (TEMPLATE)::getFlashes() ?>	
 		<main>
     		<h2>Successful operation</h2>
     
