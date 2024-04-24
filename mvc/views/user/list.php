@@ -79,10 +79,7 @@
                         <td><?=$user->updated_at?></td> 
                         <td><?=$user->blocked_at?></td>            
                         <td>
-                            <a class='button' href='/User/show/<?=$user->id ?>'>Show</a>
-                            <a class='button' href='/User/edit/<?=$user->id ?>'>Edit</a>
-                            <a class='button' onclick="if(confirm('Are you sure?'))
-                                                        location.href='/User/destroy/<?=$user->id ?>'">Delete</a>
+
                         </td>
                     </tr>
                <?php } ?>
