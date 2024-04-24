@@ -18,8 +18,6 @@
         $filenames[] = $photo->name;
     }
 
-
-
     dump($files);
     dump(empty($files));
     dump($filenames);

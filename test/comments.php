@@ -19,9 +19,7 @@
             $usernames[] = $username;
         }
     }
-
-
-
+    
     dump($texts);
     dump($usernames);
 
